@@ -1,0 +1,51 @@
+#labels Featured,Phase-Deploy,Phase-Support
+= Pre-Setup =
+
+FontStream client side work with Flash CS4+ or Flex 2+ / Flex SDK, needed for `[Embed(...)]` tag.
+
+You can use this system only for TextField for Flash 9+ (FTE - flash.text.engine is not supported yet)
+
+= Use library =
+
+From `Waterfall demo/Flash/trunk/` pick up file `FontStream.as`, `SWFTemplate.as` and from `Waterfall demo/Flash/trunk/.embed/swf.template`.
+
+Besides, for Flex you need `FontModule.as` for `Text.fontContext`
+
+Create a new FontStream object and use load method.
+
+{{{
+var fsLoader:FontStream = new FontStream();
+fsLoader.addEventListener(Event.COMPLETE, ...);//font loaded
+fsLoader.addEventListener(ErrorEvent.ERROR, ...);//font load error
+fsLoader.load("http://localhost/fontstream.php", "Cyberbit", "The quick brown fox jumps over a lazy dog.", FontStyle.REGULAR);
+}}}
+
+And once `FontStream` loader dispatch complete event (in a listener).
+
+{{{
+var textField:TextField = new TextField();
+textField.embedFonts = true;
+textField.defaultTextFormat = new TextFormat("Cyberbit");
+textField.text = "The quick brown fox jumps over a lazy dog.";
+this.addChild(textField);
+}}}
+
+*Do not use any font before load it once time*, then Flash Player create sometime a strange bug with the first line.
+
+= Use "Waterfall" demo =
+
+Upload from `Waterfall demo/Build/` files `fontlist.xml`, `waterfall_demo.html` and `waterfall_demo.swf` in the same place. Or use it from local drive, but take care with "Flash Player local trust".
+
+Setup the server side.
+
+Configure "fonstream" flashvars (the location of your server script) of `waterfall_demo.html`
+
+{{{
+<object type="application/x-shockwave-flash" data="waterfall_demo.swf">
+	<param name="movie" value="waterfall_demo.swf" />
+	<param name="flashvars" value="fonstream=fontstream.php&amp;fontlist=fontlist.xml" />
+	...
+</object>
+}}}
+
+Finally launch `waterfall_demo.html` in a Web browser
