@@ -1,0 +1,62 @@
+#labels Featured,Phase-Support,Phase-Deploy
+All files are available in http://fstream.googlecode.com/files/FontStream.zip
+
+= Pre-Setup =
+
+FontStream server side work with PHP4+
+
+= Setting up =
+
+== PHP with fontcache files ==
+
+Upload the PHP file `Waterfall demo/PHP/trunk/fontstream.php` and the folder `Waterfall demo/Build/fontcache/` in the same place.
+
+The result:
+
+{{{
+fontstream.php
+fontcache/
+	Cyberbit_regular.fontcache
+	kawoszeh_regular.fontcache
+	*.fontcache
+}}}
+
+=== Add more fonts ===
+
+To create new one, you need SWF with desired font embedded.
+
+Checking available fonts in your SWF. Use `fcgen` from `Font cache generator\Build\` (OSX & WIN32 executable are available)
+
+{{{
+fcgen -l gskinner_quick_talk.swf
+Embed fonts: 6
+  0:    Hiragino Kaku Gothic Pro W3 (85 glyphs)
+  1:    _sans (0 glyphs)
+  2:    Courier (69 glyphs)
+  3:    Lucida Grande (1 glyphs)
+  4:    #HeadLineA Regular (0 glyphs)
+  5:    Futura Condensed Medium (21 glyphs)
+}}}
+
+Then export desired font (here the first)
+
+{{{
+fcgen -i 0 gskinner_quick_talk.swf
+Hiragino Kaku Gothic Pro W3_regular.fontcache generated in 0.023 seconds (12302 bytes)
+}}}
+
+Finally, simply add created file(s) `*.fontcache` in fontcache folder
+
+=== Change fontcache files location ===
+
+You can modify PHP script to change current `fontcache/` path with an other place
+
+{{{
+$filename = 'fontcache/' . $font . '_' . $style . '.fontcache';
+if(!file_exists($filename))
+	$filename = 'fontcache/Arial Unicode MS_regular.fontcache';
+}}}
+
+== PHP with MySQL ==
+
+Not available yet
