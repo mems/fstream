@@ -1,0 +1,14 @@
+Font resources
+  * [http://en.wikipedia.org/wiki/Font Font]
+  * [http://en.wikipedia.org/wiki/Font_rasterization Font rasterization]
+  * [http://en.wikipedia.org/wiki/Mapping_of_Unicode_characters Mapping of Unicode characters]
+
+FTE (flash.text.engine)
+  * [http://www.insideria.com/2009/03/flash-text-engine.html Flash Text Engine InsideRIA]
+
+Saffron (Flash Text Renderer)
+  * [http://en.wikipedia.org/wiki/Saffron_Type_System Saffron Type System]
+  * [http://www.merl.com/people/perry/SaffronWebPage/index.html Saffron]
+
+Other font exchange format
+  * [http://www.w3.org/Submission/EOT/ Embedded OpenType (EOT) File Format]
