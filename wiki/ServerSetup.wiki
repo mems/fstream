@@ -42,7 +42,7 @@ Then export desired font (here the first)
 
 {{{
 fcgen -i 0 gskinner_quick_talk.swf
-Hiragino Kaku Gothic Pro W3_regular.fontcache generated in 0.023 seconds (12302 bytes)
+Hiragino Kaku Gothic Pro W3_regular.fontcache generated (12302 bytes)
 }}}
 
 Finally, simply add created file(s) `*.fontcache` in fontcache folder
