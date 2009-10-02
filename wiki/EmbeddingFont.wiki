@@ -1,5 +1,3 @@
-Compare
-
 || || Flash CS3 || Flash CS4 || Flex SDK || swfmill ||
 || Font styles^1^ ||  || X || X || X ||
 || MXML CSS ||  ||  || X ||  ||
