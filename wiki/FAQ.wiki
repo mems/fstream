@@ -1,16 +1,16 @@
 #summary FAQ
 
-== Avec FontStream, peux on récuperer les dessins des glyphs d'une police ? ==
-Non, FontStream n'est pas prévu pour récuper les déssins des glyphs. Pour cela il faut utiliser une librairie tierce comme [https://github.com/claus/as3swf as3swf] ou [http://www.sephiroth.it/weblog/archives/2007/07/fontreader_convert_truetype_fonts_in.php FonReader]
+== With FontStream, can we get glyphs shapes of font? ==
+No, FontStream was not made for that. If you need this, use a third part library like [https://github.com/claus/as3swf as3swf] or [http://www.sephiroth.it/weblog/archives/2007/07/fontreader_convert_truetype_fonts_in.php FonReader]
 
-== Peut on utiliser FontStream avec le moteur de texte de Flash 10 (FTE, flash.text.engine) ? ==
-Non, Pour le moment FontStream ne fonctionne qu'avec la classe TextField et les sous classes de celles ci (Flex), car ce nouveau moteur utilise une autre méthode embarquement des polices (`DefineFont4`, Compact Font Format)
+== Can we use FontStream with Flash 10 text engine (FTE, flash.text.engine)? ==
+No, for the moment, FontStream work only with TextField class or its subclasses (Flex). It's due to a technical difference between the old engine and the new one to embed fonts (`DefineFont4`, Compact Font Format)
 
-== Quelles caractères / langues sont supportées ? ==
-Toutes les caractères qui sont présents dans le _[http://en.wikipedia.org/wiki/Unicode_plane#Basic_Multilingual_Plane Basic Multilingual Plane (plane 0)]_ d'Unicode, soit la grande majorité des langues actuels
+== Which chars / languages are supported? ==
+All char of Unicode [http://en.wikipedia.org/wiki/Unicode_plane#Basic_Multilingual_Plane Basic Multilingual Plane (plane 0)], which contains the majority of actual commons languages.
 
-== Quelles formats de police sont supportés ==
-Cela dépend de la méthode utilisé pour générer un fichier SWF embarquant la police. (cf. [EmbedFont Comment embarquer une police dans un SWF])
+== Which font format are supported? ==
+It's depend of what tool is used to generate SWF files. (see [EmbedFont How to embed a font in a SWF])
 
-== Quel type de licence sont nécéssaire ==
-FontStream require le même type de licence qu'un embarquement de police dans Flash (dans un fichier SWF) (cf. [AboutFonts#Licences Licences])
+== Which license kind is needed? ==
+FontStream require the same license than embedding a font in a SWF document. (See [AboutFonts#Licenses Licenses])

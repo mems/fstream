@@ -93,8 +93,4 @@ package
 
 = Waterfall =
 
-Démonstration de chargement dynamique de polices.
-
 [http://code.google.com/p/fstream http://fstream.googlecode.com/svn/wiki/WaterfallScreenCapture.png]
-
-On peux percevoir le temps de délais entre la sélection du texte choisi (ou entré) et l'affichage de celui ci dans la police sélectionnée. Il correspond au temps de chargement des caractères qui n'ont pas été encore chargé.

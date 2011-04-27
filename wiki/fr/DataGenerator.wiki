@@ -2,15 +2,18 @@
 
 = Data generator =
 
-Dans la version actuel de FontStream, les données stockées sur le serveur sont des fichiers SWF conprenant un police embarquée.
+Dans la version actuel de !FontStream, les données stockées sur le serveur sont des fichiers SWF conprenant un police embarquée.
+
 Pour que le système fonctionne correctement, chaque SWF contiens un nombre définit de caractères (par défaut 100):
 
-	U+0000-U+0063
-	U+0064-U+00C7
-	U+00C8-U+012B
-	U+012C-U+018F
-	U+0190-U+01F3
-	...
+{{{
+U+0000-U+0063
+U+0064-U+00C7
+U+00C8-U+012B
+U+012C-U+018F
+U+0190-U+01F3
+...
+}}}
 
 Il n'existe pas d'outil dédié pour le moment, mais la génération de ces fichiers peux être faite par les outils listés ci dessous.
 
@@ -22,7 +25,7 @@ _Nécéssite la version non open-source du Flex SDK (cf. [http://help.adobe.com/
 $ java -Dsun.io.useCanonCaches=false -Xms32m -Xmx512m -jar "$FLEX_HOME/lib/flex-fontkit.jar" -3 -u "U+0000-U+0063" "font.ttf" -o "output_folder/U+0000-U+0063"
 }}}
 
-Supporte les format TrueType, OpenType, TrueType Collection et Datafork TrueType.
+Supporte les format !TrueType, !OpenType, !TrueType Collection et Datafork !TrueType.
 
 == hxswfml ==
 
@@ -41,8 +44,9 @@ http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-
 http://tldp.org/LDP/abs/html/
 http://en.wikipedia.org/wiki/Printf#sprintf
 
-_TODO: Test this script!_
-_TODO: add error handling of java/jar exec command (in the loop)_
+*Ce script n'est pas complet et doit être testé/corrigé*
+_TODO:_ Test this script!
+_TODO:_ add error handling of java/jar exec command (in the loop)
 
 {{{
 #!/bin/bash

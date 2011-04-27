@@ -7,7 +7,7 @@ Non, FontStream n'est pas prévu pour récuper les déssins des glyphs. Pour cel
 Non, Pour le moment FontStream ne fonctionne qu'avec la classe TextField et les sous classes de celles ci (Flex), car ce nouveau moteur utilise une autre méthode embarquement des polices (`DefineFont4`, Compact Font Format)
 
 == Quelles caractères / langues sont supportées ? ==
-Toutes les caractères qui sont présents dans le _[http://en.wikipedia.org/wiki/Unicode_plane#Basic_Multilingual_Plane Basic Multilingual Plane (plane 0)]_ d'Unicode, soit la grande majorité des langues actuels
+Toutes les caractères qui sont présents dans le [http://en.wikipedia.org/wiki/Unicode_plane#Basic_Multilingual_Plane Basic Multilingual Plane (plane 0)] d'Unicode, soit la grande majorité des langues actuels
 
 == Quelles formats de police sont supportés ==
 Cela dépend de la méthode utilisé pour générer un fichier SWF embarquant la police. (cf. [EmbedFont Comment embarquer une police dans un SWF])

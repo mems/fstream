@@ -2,27 +2,30 @@
 
 = Data generator =
 
-Dans la version actuel de FontStream, les données stockées sur le serveur sont des fichiers SWF conprenant un police embarquée.
-Pour que le système fonctionne correctement, chaque SWF contiens un nombre définit de caractères (par défaut 100):
+The current !FontStream version support only SWF format which contains a embedded font (chunks).
 
-	U+0000-U+0063
-	U+0064-U+00C7
-	U+00C8-U+012B
-	U+012C-U+018F
-	U+0190-U+01F3
-	...
+Each SWF (font chunk) contains a defined number of chars (default 100):
 
-Il n'existe pas d'outil dédié pour le moment, mais la génération de ces fichiers peux être faite par les outils listés ci dessous.
+{{{
+U+0000-U+0063
+U+0064-U+00C7
+U+00C8-U+012B
+U+012C-U+018F
+U+0190-U+01F3
+...
+}}}
+
+No specific tool exist at the moment, but compiling this files could be done with one of tools listed below.
 
 == Flex SDK ==
 
-_Nécéssite la version non open-source du Flex SDK (cf. [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000 fontswf])_
+_Need a non-open-source version of Flex SDK (see  [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000 fontswf])_
 
 {{{
 $ java -Dsun.io.useCanonCaches=false -Xms32m -Xmx512m -jar "$FLEX_HOME/lib/flex-fontkit.jar" -3 -u "U+0000-U+0063" "font.ttf" -o "output_folder/U+0000-U+0063"
 }}}
 
-Supporte les format TrueType, OpenType, TrueType Collection et Datafork TrueType.
+!TrueType, !OpenType, !TrueType Collection and Datafork !TrueType font formats are supported.
 
 == hxswfml ==
 
@@ -34,14 +37,15 @@ $ hxswfml ttf2swf "font.ttf" "output_folder/U+0000-U+0063" -glyphs 0-99 -class E
 
 == Shell script, ligne de commande ==
 
-_Ce script utilise le Flex SDK, mais peux être adapté pour l'utilisation d'autres outils_
+_This script use Flex SDK, but could be adapted to use an other tool._
 
 http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000
 http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 http://tldp.org/LDP/abs/html/
 http://en.wikipedia.org/wiki/Printf#sprintf
 
-_TODO: Test this script!_
+*This script must be debugged and tested!*
+_TODO: Need to test this script!_
 _TODO: add error handling of java/jar exec command (in the loop)_
 
 {{{
