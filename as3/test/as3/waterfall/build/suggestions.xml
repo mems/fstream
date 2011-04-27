@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<suggestions>
+	<!-- http://www.cl.cam.ac.uk/~mgk25/ucs/examples/quickbrown.txt -->
+	<!-- http://www.artlebedev.ru/kovodstvo/sections/33/ -->
+	<!-- http://labs.adobe.com/technologies/textlayout/ -->
+	<!-- http://www.lorem-ipsum.info/generator3 -->
+	<suggestion><![CDATA[Lorem ipsum dolor sit amet]]></suggestion>
+	<suggestion><![CDATA[abcdefghijklmnopqrstuvwxyz]]></suggestion>
+	<suggestion><![CDATA[ABCDEFGHIJKLMNOPQRSTUVWXYZ]]></suggestion>
+	<suggestion><![CDATA[The quick brown fox jumps over a lazy dog.]]></suggestion><!-- en -->
+	<suggestion><![CDATA[Falsches Üben von Xylophonmusik quält jeden größeren Zwerg]]></suggestion><!-- de -->
+	<suggestion><![CDATA[Quizdeltagerne spiste jordbær med fløde, mens cirkusklovnen Wolther spillede på xylofon.]]></suggestion><!-- da -->
+	<suggestion><![CDATA[El pingüino Wenceslao hizo kilómetros bajo exhaustiva lluvia y frío, añoraba a su querido cachorro.]]></suggestion><!-- es -->
+	<suggestion><![CDATA[Le cœur déçu mais l'âme plutôt naïve, Louÿs rêva de crapaüter en canoë au delà des îles, près du mälström où brûlent les novæ.]]></suggestion><!-- fr -->
+	<suggestion><![CDATA[Γαζέες καὶ μυρτιὲς δὲν θὰ βρῶ πιὰ στὸ χρυσαφὶ ξέφωτο]]></suggestion><!-- el -->
+	<suggestion><![CDATA[D'fhuascail Íosa, Úrmhac na hÓighe Beannaithe, pór Éava agus Ádhaimh]]></suggestion><!-- ga -->
+	<suggestion><![CDATA[Árvíztűrő tükörfúrógép]]></suggestion><!-- hu -->
+	<suggestion><![CDATA[Kæmi ný öxi hér ykist þjófum nú bæði víl og ádrepa. Sævör grét áðan því úlpan var ónýt]]></suggestion><!-- is -->
+	<suggestion><![CDATA[いろはにほへとちりぬるを わかよたれそつねならむ うゐのおくやまけふこえて あさきゆめみしゑひもせす]]></suggestion><!-- jp (Hiragana) -->
+	<suggestion><![CDATA[イロハニホヘト チリヌルヲ ワカヨタレソ ツネナラム ウヰノオクヤマ ケフコエテ アサキユメミシ ヱヒモセスン]]></suggestion><!-- jp (Hiragana) -->
+	<suggestion><![CDATA[? דג סקרן שט בים מאוכזב ולפתע מצא לו חברה איך הקליטה]]></suggestion><!-- iw -->
+	<suggestion><![CDATA[Pchnąć w tę łódź jeża lub ośm skrzyń fig]]></suggestion><!-- pl -->
+	<suggestion><![CDATA[В чащах юга жил бы цитрус? Да, но фальшивый экземпляр!]]></suggestion><!-- ru -->
+	<suggestion><![CDATA[1234567890]]></suggestion>
+	<!-- http://en.wikipedia.org/wiki/Latin_1 -->
+	<suggestion><![CDATA[ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ]]></suggestion>
+	<suggestion><![CDATA[!\"§$%&/()=? @€]]></suggestion>
+	<!-- http://en.wikipedia.org/wiki/Typographic_ligature -->
+	<suggestion><![CDATA[& ß Æ æ Œ œ Ĳ ĳ ᵫ ﬀ ﬁ ﬂ ﬃ ﬄ ﬅ ﬆ]]></suggestion>
+	<!-- http://en.wikipedia.org/wiki/International_Phonetic_Alphabet -->
+	<suggestion><![CDATA[ɐɑɒɓɔɕɖɗɘəɚɛɜɝɞɟɠɡɢɣɤɥɦɧɨɩɪɫɬɭɮɯɰɱɲɳɴɵɶɷɸɹɺɻɼɽɾɿʀʁʂʃʄʅʆʇʈʉʊʋʌʍʎʏʐʑʒʓʔʕʖʗʘʙʚʛʜʝʞʟʠʡʢʣʤʥʦʧʨʩʪʫʬʭʮʯ]]></suggestion>
+	<suggestion><![CDATA[<date>]]></suggestion>
+	<suggestion><![CDATA[<fontname>]]></suggestion>
+	<suggestion><![CDATA[<location>]]></suggestion>
+</suggestions>

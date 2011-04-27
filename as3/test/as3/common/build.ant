@@ -1,0 +1,18 @@
+<project name="FontStream - Test">
+	<fdt.loadProjectProperties projectname="fontstream" />
+	<target name="Test - DataInputUnion" description="test-DataInputUnion">
+		<fdt.launch.application projectname="${FDTProject}" mainclass="${FDTProjectPath}/test/as3/common/src/fstream/test/DataInputUnionExample.as" target="${FDTProjectPath}/test/as3/common/build/DataInputUnionExample.swf" debug="true" startswf="true" swflauncher="Adobe Flash Player" swflocation="${FDTProjectPath}/test/as3/common/build/DataInputUnionExample.swf" />
+	</target>
+	<target name="Test - LoadFont" description="test-LoadFont">
+		<fdt.launch.application projectname="${FDTProject}" mainclass="${FDTProjectPath}/test/as3/common/src/fstream/test/LoadFontExample.as" target="${FDTProjectPath}/test/as3/common/build/LoadFontExample.swf" debug="true" startswf="true" swflauncher="Adobe Flash Player" swflocation="${FDTProjectPath}/test/as3/common/build/LoadFontExample.swf" />
+	</target>
+	<target name="Test - RegisterFont" description="test-RegisterFont">
+		<fdt.launch.application projectname="${FDTProject}" mainclass="${FDTProjectPath}/test/as3/common/src/fstream/test/RegisterFontExample.as" target="${FDTProjectPath}/test/as3/common/build/RegisterFontExample.swf" debug="true" startswf="true" swflauncher="Adobe Flash Player" swflocation="${FDTProjectPath}/test/as3/common/build/RegisterFontExample.swf" />
+	</target>
+	<target name="Test - SWFFontDataInput" description="test-SWFFontDataInput">
+		<fdt.launch.application projectname="${FDTProject}" mainclass="${FDTProjectPath}/test/as3/common/src/fstream/test/SWFFontDataInputExample.as" target="${FDTProjectPath}/test/as3/common/build/SWFFontDataInputExample.swf" debug="true" startswf="true" swflauncher="Adobe Flash Player" swflocation="${FDTProjectPath}/test/as3/common/build/SWFFontDataInputExample.swf" />
+	</target>
+	<target name="Test - SWFFontDataOutput" description="test-SWFFontDataOutput">
+		<fdt.launch.application projectname="${FDTProject}" mainclass="${FDTProjectPath}/test/as3/common/src/fstream/test/SWFFontDataOutputExample.as" target="${FDTProjectPath}/test/as3/common/build/SWFFontDataOutputExample.swf" debug="true" startswf="true" swflauncher="Adobe Flash Player" swflocation="${FDTProjectPath}/test/as3/common/build/SWFFontDataOutputExample.swf" />
+	</target>
+</project>
