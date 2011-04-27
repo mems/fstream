@@ -22,21 +22,27 @@ _TODO:_ use GZipCompression (work for server cache files nor for chunked encodin
 == Sort and uniqueness ==
 
 A quick method is using bit to save if a char is used or not:
-bit @0 = 1 if charcode U+0000 is present, bit @1 = 1 charcode U+0001 is present, etc.
-[01000010 01000101 00000000 ...] -> U+0001,U+0006,U+0009,U+0013,U+0015
+bit `@0 = 1` if charcode `U+0000` is present, bit `@1 = 1` charcode `U+0001` is present, etc.
+{{{
+[01000010 01000101 00000000 ...] give U+0001,U+0006,U+0009,U+0013,U+0015
+}}}
 
-Compared to nested loops (or indexOf/lastIndexOf), it's reduce CPU usage, potentialy use more memory:
-- For Basic Multilingual Plane (plane 0, BMP) -> 65536 values (U+0000-U+FFFF), require 8192 bytes
-- For all Unicodes Planes (16 planes, BMP + SMP + SIP + Unassigned + SSP + PUA, http://en.wikipedia.org/wiki/Mapping_of_Unicode_characters#Planes) -> 1114112 values (U+0000-U+10FFFF), require 139264 bytes.
-	It's can be reduced to 49152 bytes if remove plane 3 to 13 (720896 values, U+30000–U+DFFFF Unassigned)
+Compared to nested loops (or `indexOf()`/`lastIndexOf()`), it reduce CPU usage, but potentialy use more memory:
 
-Flash/JavaScript handle only 16 bits integers for characters code
-This method can be used for highter bits numbers. Example:
-For uint32 -> 4294967296 values (0x00000000 to 0xFFFFFFFF), require 536870912 bytes (537MB)
+	* For Basic Multilingual Plane (plane 0, BMP) -> 65536 values (`U+0000-U+FFFF`), require 8192 bytes
+	* For all [http://en.wikipedia.org/wiki/Mapping_of_Unicode_characters#Planes Unicodes Planes] give 1114112 values (`U+0000-U+10FFFF`), require 139264 bytes. Can be reduced to 49152 bytes, if plane 3 to 13 are removed (720896 values, `U+30000–U+DFFFF` Unassigned plane)
+
+Flash & !JavaScript handle only 16 bits integers for characters code.
+
+This method can't be used for highter bits numbers.
+
+Example for uint32:
+
+	4294967296 values (`0x00000000` to `0xFFFFFFFF`), require 536870912 bytes (537MB)
 
 In addition, the AVM take in memory 92 byte to store each ByteArray object.
 
-To read presence of a charcode U+XXXX, use:
+To read presence of a charcode `U+XXXX`, use:
 {{{
 var charCode:uint = 0xXXXX;
 var charCodeNeeded:Boolean = ((charMap[uint(charCode / 8)] >> (charCode % 8)) & 1) == 0;
@@ -84,6 +90,7 @@ return String.fromCharCode.apply(null, charCodes);
 = Debugging =
 
 _TODO:_ use `memory_get_peak_usage()` to trace memory usage (max).
+
 _TODO:_ use [http://xdebug.org/ Xdebug]
 
 http://phplens.com/lens/php-book/optimizing-debugging-php.php

@@ -1,4 +1,4 @@
-#summary Exemples d'utilisation
+#summary Exemples
 
 = Basic =
 
