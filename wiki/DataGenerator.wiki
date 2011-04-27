@@ -39,13 +39,15 @@ $ hxswfml ttf2swf "font.ttf" "output_folder/U+0000-U+0063" -glyphs 0-99 -class E
 
 _This script use Flex SDK, but could be adapted to use an other tool._
 
-http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000
-http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
-http://tldp.org/LDP/abs/html/
-http://en.wikipedia.org/wiki/Printf#sprintf
+	* http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000
+	* http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
+	* http://tldp.org/LDP/abs/html/
+	* http://en.wikipedia.org/wiki/Printf#sprintf
 
 *This script must be debugged and tested!*
+
 _TODO: Need to test this script!_
+
 _TODO: add error handling of java/jar exec command (in the loop)_
 
 {{{

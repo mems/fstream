@@ -11,13 +11,13 @@ Toutes les méthodes qui existent pour embarquer une police ne donnent pas le m�
 Flash Professional supporte par l'intermédiaire du Flex SDK les balises metadata. Voir la partie sur [EmbedFont#Les_balises_metadata les balises metadata].
 
 Les formats de police supporté sont :
-	* TrueType (`*`.ttf)
-	* TrueType Collections (`*`.ttc)
-	* OpenType (`*`.otf)
+	* !TrueType (`*`.ttf)
+	* !TrueType Collections (`*`.ttc)
+	* !OpenType (`*`.otf)
 	* Mac Data Fork Fonts (`*`.dfont)
-	* Mac Resource Fork TrueType Suitcases (sans extension)
-	* Type 1 PostScript (non applicable pour le TFE)
-	* bitmap (Macintosh only)
+	* Mac Resource Fork !TrueType Suitcases (sans extension)
+	* Type 1 !PostScript (non applicable pour le FTE)
+	* Bitmap (Macintosh seulement)
 
 === Bibiothèque ===
 

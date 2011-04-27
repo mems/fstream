@@ -1,10 +1,10 @@
 #summary FAQ
 
-== With FontStream, can we get glyphs shapes of font? ==
-No, FontStream was not made for that. If you need this, use a third part library like [https://github.com/claus/as3swf as3swf] or [http://www.sephiroth.it/weblog/archives/2007/07/fontreader_convert_truetype_fonts_in.php FonReader]
+== With !FontStream, can we get glyphs shapes of font? ==
+No, !FontStream was not made for that. If you need this, use a third part library like [https://github.com/claus/as3swf as3swf] or [http://www.sephiroth.it/weblog/archives/2007/07/fontreader_convert_truetype_fonts_in.php FonReader]
 
-== Can we use FontStream with Flash 10 text engine (FTE, flash.text.engine)? ==
-No, for the moment, FontStream work only with TextField class or its subclasses (Flex). It's due to a technical difference between the old engine and the new one to embed fonts (`DefineFont4`, Compact Font Format)
+== Can we use !FontStream with Flash 10 text engine (FTE, `flash.text.engine`)? ==
+No, for the moment, !FontStream work only with `TextField` class or its subclasses (Flex). It's due to a technical difference between the old engine and the new one to embed fonts (`DefineFont4`, Compact Font Format)
 
 == Which chars / languages are supported? ==
 All char of Unicode [http://en.wikipedia.org/wiki/Unicode_plane#Basic_Multilingual_Plane Basic Multilingual Plane (plane 0)], which contains the majority of actual commons languages.
@@ -13,4 +13,4 @@ All char of Unicode [http://en.wikipedia.org/wiki/Unicode_plane#Basic_Multilingu
 It's depend of what tool is used to generate SWF files. (see [EmbedFont How to embed a font in a SWF])
 
 == Which license kind is needed? ==
-FontStream require the same license than embedding a font in a SWF document. (See [AboutFonts#Licenses Licenses])
+!FontStream require the same license than embedding a font in a SWF document. (See [AboutFonts#Licenses Licenses])
