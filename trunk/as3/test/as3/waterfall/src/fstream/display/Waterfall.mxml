@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!---
+The main class of Waterfall demo of FontStream
+-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="creationCompleteListener(event);">
+		
+	<fx:Declarations>
+		<mx:HTTPService id="fontListLoader" resultFormat="e4x" result="fontListLoader_resultHandler(event);" fault="fontListLoader_faultHandler(event);" />
+		<mx:HTTPService id="suggestionsLoader" resultFormat="e4x" result="suggestionsLoader_resultHandler(event);" fault="suggestionsLoader_faultHandler(event);" />
+	</fx:Declarations>
+		
+	<mx:VBox paddingTop="10" paddingRight="10" paddingBottom="10" paddingLeft="10" width="100%" height="100%" verticalGap="20">
+		<mx:HBox width="100%" horizontalGap="20">
+			<mx:ComboBox id="fontList" width="190" rowCount="10" />
+			<mx:ComboBox id="textInput" width="100%" minWidth="300" editable="true" rowCount="10" />
+		</mx:HBox>
+		
+		<mx:List id="fontSamples" itemRenderer="fstream.display.SampleItem" height="100%" width="100%" variableRowHeight="true">
+			<mx:dataProvider>
+				<fx:Array>
+					<fx:Object size="6" />
+					<fx:Object size="7" />
+					<fx:Object size="8" />
+					<fx:Object size="9" />
+					<fx:Object size="10" />
+					<fx:Object size="12" />
+					<fx:Object size="14" />
+					<fx:Object size="16" />
+					<fx:Object size="18" />
+					<fx:Object size="24" />
+					<fx:Object size="32" />
+					<fx:Object size="48" />
+					<fx:Object size="72" />
+					<fx:Object size="96" />
+				</fx:Array>
+			</mx:dataProvider>
+		</mx:List>
+	</mx:VBox>
+		
+	<fx:Script>
+		<![CDATA[
+			import fstream.net.FontChunksRequest;
+			import fstream.net.FontLoader;
+			import fstream.system.FlexFontModule;
+
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+			import mx.core.IFlexModuleFactory;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+
+			import flash.events.ErrorEvent;
+			import flash.events.Event;
+			import flash.text.FontStyle;
+		
+		private var _loader:FontLoader = new FontLoader();
+		
+		private function creationCompleteListener(event:FlexEvent):void
+		{
+			var parameters:Object = FlexGlobals.topLevelApplication.parameters;
+			FontChunksRequest.defaultURLSyntax = parameters.hasOwnProperty("url") ? parameters.url : "<fontname>_<fontstyle>/<range>";
+			FontChunksRequest.defaultChunkLength = parameters.hasOwnProperty("chunkSize") ? parameters.chunkSize : 100;
+			
+			_loader.addEventListener(Event.COMPLETE, loader_eventListener);
+			_loader.addEventListener(ErrorEvent.ERROR, loader_eventListener);
+			_loader.addEventListener(IOErrorEvent.IO_ERROR, loader_eventListener);
+			
+			fontListLoader.url = parameters.hasOwnProperty("list") ? parameters.list : "fontlist.xml";
+			fontListLoader.send();
+		}
+		
+		private function fontListLoader_resultHandler(event:ResultEvent):void
+		{
+			var data:XML = event.result as XML;
+			var fonts:Array = [];
+			for each(var font:XML in data.font)
+				fonts.push({label: String(font.@name + " " + font.@style), fontName: String(font.@name), fontStyle: String(font.@style)});
+			fontList.dataProvider = fonts;
+			
+			suggestionsLoader.url = parameters.hasOwnProperty("suggestions") ? parameters.suggestions : "suggestions.xml";
+			suggestionsLoader.send();
+		}
+		
+		private function suggestionsLoader_resultHandler(event:ResultEvent):void
+		{
+			var data:XML = event.result as XML;
+			var suggestions:Array = [];
+			for each(var suggestion:XML in data.suggestion)
+				suggestions.push(String(suggestion));
+			textInput.dataProvider = suggestions;
+			
+			fontList.addEventListener(Event.CHANGE, fontChangeListener, false, 0, true);
+			textInput.addEventListener(Event.CHANGE, textChangeListener, false, 0, true);
+			updateSample();
+		}
+		
+		private function fontListLoader_faultHandler(event:FaultEvent):void
+		{
+			Alert.show("Unable to read font list:\n" + event.fault.message, "Error", 0);
+		}
+		
+		private function suggestionsLoader_faultHandler(event:FaultEvent):void
+		{
+			Alert.show("Unable to read suggestions:\n" + event.fault.message, "Error", 0);
+		}
+		
+		private function loader_eventListener(event:Event):void
+		{
+			var font:Object = this.fontList.selectedItem;
+			var fontName:String = font.fontName;
+			var fontStyle:String = font.fontStyle;
+			var fontContext:IFlexModuleFactory = FlexFontModule.getFontContext(_loader.font);
+			
+			var bold:Boolean = fontStyle == FontStyle.BOLD || fontStyle == FontStyle.BOLD_ITALIC;
+			var italic:Boolean = fontStyle == FontStyle.ITALIC || fontStyle == FontStyle.BOLD_ITALIC;
+			var text:String = textInput.text;
+			switch(text)
+			{
+				case "<date>":
+					text = String(new Date());
+					break;
+				case "<fontname>":
+					text = fontName + " " + fontStyle;
+					break;
+				case "<location>":
+					text = this.loaderInfo.loaderURL;
+					break;
+			}
+			var dataProvider:Object = fontSamples.dataProvider;
+			for each(var item:Object in dataProvider)
+			{
+				item.text = text;
+				item.fontName = fontName;
+				item.fontContext = fontContext;
+				item.bold = bold;
+				item.italic = italic;
+			}
+			fontSamples.dataProvider = dataProvider;
+			
+			if(event is ErrorEvent)
+				Alert.show("Font warning:\n" + ErrorEvent(event).text, "Warning", Alert.OK);
+		}
+		
+		private function fontChangeListener(event:Event):void
+		{
+			this.updateSample();
+		}
+		
+		private function textChangeListener(event:Event):void
+		{
+			this.updateSample();
+		}
+		
+		private function updateSample():void
+		{
+			var font:Object = this.fontList.selectedItem;
+			var fontName:String = font.fontName;
+			var fontStyle:String = font.fontStyle;
+			var text:String = textInput.text;
+			switch(text)
+			{
+				case "<date>":
+					text = String(new Date());
+					break;
+				case "<fontname>":
+					text = fontName + " " + fontStyle;
+					break;
+				case "<location>":
+					text = FlexGlobals.topLevelApplication.url;
+					break;
+			}
+			
+			_loader.load(new FontChunksRequest(fontName, fontStyle, text));
+		}
+  	]]>
+	</fx:Script>
+</s:Application>

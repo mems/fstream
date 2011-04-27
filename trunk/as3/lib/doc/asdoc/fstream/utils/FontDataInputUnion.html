@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../override.css" type="text/css"><meta name="keywords" content="FontDataInputUnion,fstream.utils.FontDataInputUnion,bold,bold,bold,bold,charCodes,charCodes,charCodes,charCodes,csmTableHint,csmTableHint,csmTableHint,csmTableHint,fontAscent,fontAscent,fontAscent,fontAscent,fontClassName,fontDescent,fontDescent,fontDescent,fontDescent,fontLeading,fontLeading,fontLeading,fontLeading,fontName,fontName,fontName,fontName,italic,italic,italic,italic,kerningsCharCodes,kerningsCharCodes,kerningsCharCodes,kerningsCharCodes,languageCode,languageCode,languageCode,languageCode,numChars,numChars,numChars,numChars,numKernings,numKernings,numKernings,numKernings,smallText,smallText,smallText,smallText,append,append,append,append,charLeftPadding,dump,encodeBase64URL,getUTFStringBytesLength,isEqual,readAdvanceAt,readAdvanceAt,readAdvanceAt,readAdvanceAt,readAlignZoneAt,readAlignZoneAt,readAlignZoneAt,readAlignZoneAt,readBoundAt,readBoundAt,readBoundAt,readBoundAt,readGlyphShapeAt,readGlyphShapeAt,readGlyphShapeAt,readGlyphShapeAt,readKerningRecordAt,readKerningRecordAt,readKerningRecordAt,readKerningRecordAt,sortChars,toHexa,writeDefineFont3,writeDefineFontAlignZones,writeDoABCTag,writeEncodedUInt,writeEncodedUTF,writeFont,writeFont,writeString,writeSymbolClassTag"><title>fstream.utils.FontDataInputUnion</title></head><body><script language="javascript" type="text/javascript" src="../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../help.js"></script><script language="javascript" type="text/javascript" src="../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+				asdocTitle = 'FontDataInputUnion - FontStream - Library';
+				var baseRef = '../../';
+				window.onload = configPage;
+			--></script>
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">FontStream - Library</td><td class="titleTableTopNav" align="right"><a href="../../package-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../class-summary.html" onclick="loadClassListFrame('../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../all-index-A.html" onclick="loadClassListFrame('../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../index.html?fstream/utils/FontDataInputUnion.html&amp;fstream/utils/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">FontDataInputUnion</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("FontDataInputUnion"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">fstream.utils</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  FontDataInputUnion</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">FontDataInputUnion  <img src="../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr><tr><td class="classHeaderTableLabel">Implements</td><td> <a href="../../fstream/utils/IFontDataInput.html">IFontDataInput</a></td></tr></table><p></p><p></p><p></p>
+	 Merge a collection of IFontDataInput to make an unique IFontDataInput object, by suppress duplicates plus sort all charcodes and kernings.
+	 Data depends the order of elements in collection. Font name, style, metrics, etc. come from first element completed by other (second, third, etc.)
+	 <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#bold" class="signatureLink">bold</a> : Boolean<div class="summaryTableDescription">[read-only] 
+		 
+		 Define if the font style is bold
+		 </div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#charCodes" class="signatureLink">charCodes</a> : Vector.&lt;uint&gt;<div class="summaryTableDescription">[read-only] 
+		 
+		 Sorted char codes in ascent order.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#csmTableHint" class="signatureLink">csmTableHint</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 Font thickness hint.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#fontAscent" class="signatureLink">fontAscent</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 Font ascender height.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#fontDescent" class="signatureLink">fontDescent</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 Font descender height.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#fontLeading" class="signatureLink">fontLeading</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 Font leading height
+		 It is a vertical line-spacing metric.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#fontName" class="signatureLink">fontName</a> : String<div class="summaryTableDescription">[read-only] 
+		 
+		 Define the font name
+		 </div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#italic" class="signatureLink">italic</a> : Boolean<div class="summaryTableDescription">[read-only] 
+		 
+		 Define if the font style is italic
+		 </div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#kerningsCharCodes" class="signatureLink">kerningsCharCodes</a> : Vector.&lt;uint&gt;<div class="summaryTableDescription">[read-only] 
+		 
+		 Sorted kernings char code in ascent order.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#languageCode" class="signatureLink">languageCode</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 Flash Player uses language codes to determine line-breaking rules for dynamic text, and to choose backup fonts when a specified device font is unavailable.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#numChars" class="signatureLink">numChars</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 Fast access to number of glyphs in font.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#numKernings" class="signatureLink">numKernings</a> : uint<div class="summaryTableDescription">[read-only] 
+		 
+		 Fast access to number of kernings in font.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#smallText" class="signatureLink">smallText</a> : Boolean<div class="summaryTableDescription">[read-only] 
+		 
+		 Define if the font is small.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#FontDataInputUnion()" class="signatureLink">FontDataInputUnion</a>(fontsData:Vector.&lt;<a href="../../fstream/utils/IFontDataInput.html">IFontDataInput</a>&gt;)</div><div class="summaryTableDescription">
+		 </div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#append()" class="signatureLink">append</a>(... args):<a href="../../fstream/utils/IFontDataInput.html">IFontDataInput</a></div><div class="summaryTableDescription">
+		 
+		 Make an union with others IFontDataInput
+		 Current data include font name, style, metrics ands chars (glyphs, bounds, etc.) take precedence over others appended.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#readAdvanceAt()" class="signatureLink">readAdvanceAt</a>(bytes:ByteArray, index:uint, offset:uint = 0):uint</div><div class="summaryTableDescription">
+		 
+		 Advance value to be used for each glyph in dynamic glyph text.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#readAlignZoneAt()" class="signatureLink">readAlignZoneAt</a>(bytes:ByteArray, index:uint, offset:uint = 0):uint</div><div class="summaryTableDescription">
+		 
+		 Read align bytes of specified char (SWF ZONERECORD format)
+		 NOTE: NumZoneData must be always 2.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#readBoundAt()" class="signatureLink">readBoundAt</a>(bytes:ByteArray, index:uint, offset:uint = 0):uint</div><div class="summaryTableDescription">
+		 
+		 Read bound bytes of specified char (SWF RECT format)
+		 </div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#readGlyphShapeAt()" class="signatureLink">readGlyphShapeAt</a>(bytes:ByteArray, index:uint, offset:uint = 0):uint</div><div class="summaryTableDescription">
+		 
+		 Read glyph bytes of specified char
+		 </div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#readKerningRecordAt()" class="signatureLink">readKerningRecordAt</a>(bytes:ByteArray, index:uint, offset:uint = 0):uint</div><div class="summaryTableDescription">
+		 
+		 Read bytes of specified kerning
+		 A Kerning Record defines the distance between two glyphs in EM square coordinates.</div></td><td class="summaryTableOwnerCol">FontDataInputUnion</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="bold"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">bold</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>bold:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Define if the font style is bold
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get bold():Boolean</code><br/></div><a name="propertyDetail"></a><a name="charCodes"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">charCodes</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>charCodes:Vector.&lt;uint&gt;</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Sorted char codes in ascent order.
+		 All char codes are Unicodes.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get charCodes():Vector.&lt;uint&gt;</code><br/></div><a name="propertyDetail"></a><a name="csmTableHint"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">csmTableHint</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>csmTableHint:uint</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Font thickness hint. Refers to the thickness of the typical stroke used in the font.
+		 0 = thin
+		 1 = medium
+		 2 = thick
+		 Flash Player maintains a selection of CSM tables for many fonts. However, if the font is not found in Flash Player's internal table, this hint is used to choose an appropriate table.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get csmTableHint():uint</code><br/></div><a name="propertyDetail"></a><a name="fontAscent"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">fontAscent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>fontAscent:uint</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Font ascender height.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get fontAscent():uint</code><br/></div><a name="propertyDetail"></a><a name="fontDescent"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">fontDescent</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>fontDescent:uint</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Font descender height.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get fontDescent():uint</code><br/></div><a name="propertyDetail"></a><a name="fontLeading"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">fontLeading</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>fontLeading:uint</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Font leading height
+		 It is a vertical line-spacing metric. It is the distance (in EM-square coordinates) between the bottom of the descender of one line and the top of the ascender of the next line.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get fontLeading():uint</code><br/></div><a name="propertyDetail"></a><a name="fontName"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">fontName</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>fontName:String</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Define the font name
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get fontName():String</code><br/></div><a name="propertyDetail"></a><a name="italic"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">italic</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>italic:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Define if the font style is italic
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get italic():Boolean</code><br/></div><a name="propertyDetail"></a><a name="kerningsCharCodes"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">kerningsCharCodes</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>kerningsCharCodes:Vector.&lt;uint&gt;</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Sorted kernings char code in ascent order.
+		 It's two dimension array. Its length equal to <code>kerningsCharCodes.length = numKernings 2</code>. For accessing both left and right char codes, read it like that: <code>left = kerningsCharCodes[index 2]; right = kerningsCharCodes[index 2 + 1];</code>
+		 NOTE: Cache the returned value (in a variable) if you need multiple accesses, to avoid redundant read operations.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get kerningsCharCodes():Vector.&lt;uint&gt;</code><br/></div><a name="propertyDetail"></a><a name="languageCode"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">languageCode</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>languageCode:uint</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Flash Player uses language codes to determine line-breaking rules for dynamic text, and to choose backup fonts when a specified device font is unavailable. Other uses for language codes may be found in the future.
+		 A language code of zero means no language. This code results in behavior that is dependent on the locale in which Flash Player is running. At the time of writing, the following language codes are recognized by Flash Player:
+		 1 = Latin (the western languages covered by Latin-1: English, French, German, and so on)
+		 2 = Japanese
+		 3 = Korean
+		 4 = Simplified Chinese
+		 5 = Traditional Chinese
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get languageCode():uint</code><br/></div><a name="propertyDetail"></a><a name="numChars"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">numChars</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>numChars:uint</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Fast access to number of glyphs in font.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get numChars():uint</code><br/></div><a name="propertyDetail"></a><a name="numKernings"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">numKernings</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>numKernings:uint</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Fast access to number of kernings in font.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get numKernings():uint</code><br/></div><a name="propertyDetail"></a><a name="smallText"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">smallText</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>smallText:Boolean</code>&nbsp;&nbsp;[read-only] <p></p><p></p><p>
+		 
+		 Define if the font is small.
+		 Character glyphs are aligned on pixel boundaries for dynamic and input text.
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get smallText():Boolean</code><br/></div><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="FontDataInputUnion()"></a><a name="FontDataInputUnion(Vector$fstream.utils.IFontDataInput)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">FontDataInputUnion</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function FontDataInputUnion(fontsData:Vector.&lt;<a href="../../fstream/utils/IFontDataInput.html">IFontDataInput</a>&gt;)</code><p></p><p>
+		 </p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">fontsData</span>:Vector.&lt;<a href="../../fstream/utils/IFontDataInput.html">IFontDataInput</a>&gt;</code></td></tr></table><br/><span class="label">Throws</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>ArgumentError </code> &mdash; If fontsData is null or if its length is less that one.
+		 </td></tr></table></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="append()"></a><a name="append(restParam)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">append</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function append(... args):<a href="../../fstream/utils/IFontDataInput.html">IFontDataInput</a></code><p></p><p></p><p>
+		 
+		 Make an union with others IFontDataInput
+		 Current data include font name, style, metrics ands chars (glyphs, bounds, etc.) take precedence over others appended.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code>... <span class="label">args</span></code></td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code><a href="../../fstream/utils/IFontDataInput.html">IFontDataInput</a></code></td></tr></table></div><a name="readAdvanceAt()"></a><a name="readAdvanceAt(flash.utils.ByteArray,uint,uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">readAdvanceAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function readAdvanceAt(bytes:ByteArray, index:uint, offset:uint = 0):uint</code><p></p><p></p><p>
+		 
+		 Advance value to be used for each glyph in dynamic glyph text.
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">bytes</span>:ByteArray</code> &mdash; Bytes to read into
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; Char index.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">offset</span>:uint</code> (default = <code>0</code>)<code></code> &mdash; Offset in provided ByteArray to start writing.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>uint</code> &mdash; Number of bytes written
+		 </td></tr></table></div><a name="readAlignZoneAt()"></a><a name="readAlignZoneAt(flash.utils.ByteArray,uint,uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">readAlignZoneAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function readAlignZoneAt(bytes:ByteArray, index:uint, offset:uint = 0):uint</code><p></p><p></p><p>
+		 
+		 Read align bytes of specified char (SWF ZONERECORD format)
+		 NOTE: NumZoneData must be always 2. Total in bytes is 10.
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">bytes</span>:ByteArray</code> &mdash; Bytes to read into
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; Char index.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">offset</span>:uint</code> (default = <code>0</code>)<code></code> &mdash; Offset in provided ByteArray to start writing.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>uint</code> &mdash; Number of bytes written
+		 </td></tr></table></div><a name="readBoundAt()"></a><a name="readBoundAt(flash.utils.ByteArray,uint,uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">readBoundAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function readBoundAt(bytes:ByteArray, index:uint, offset:uint = 0):uint</code><p></p><p></p><p>
+		 
+		 Read bound bytes of specified char (SWF RECT format)
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">bytes</span>:ByteArray</code> &mdash; Bytes to read into
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; Char index.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">offset</span>:uint</code> (default = <code>0</code>)<code></code> &mdash; Offset in provided ByteArray to start writing.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>uint</code> &mdash; Number of bytes written
+		 </td></tr></table></div><a name="readGlyphShapeAt()"></a><a name="readGlyphShapeAt(flash.utils.ByteArray,uint,uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">readGlyphShapeAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function readGlyphShapeAt(bytes:ByteArray, index:uint, offset:uint = 0):uint</code><p></p><p></p><p>
+		 
+		 Read glyph bytes of specified char
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">bytes</span>:ByteArray</code> &mdash; Bytes to read into
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; Char index.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">offset</span>:uint</code> (default = <code>0</code>)<code></code> &mdash; Offset in provided ByteArray to start writing.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>uint</code> &mdash; Number of bytes written
+		 </td></tr></table></div><a name="readKerningRecordAt()"></a><a name="readKerningRecordAt(flash.utils.ByteArray,uint,uint)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">readKerningRecordAt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function readKerningRecordAt(bytes:ByteArray, index:uint, offset:uint = 0):uint</code><p></p><p></p><p>
+		 
+		 Read bytes of specified kerning
+		 A Kerning Record defines the distance between two glyphs in EM square coordinates. Certain pairs of glyphs appear more aesthetically pleasing if they are moved closer together, or farther apart. The FontKerningCode1 and FontKerningCode2 fields are the character codes for the left and right characters. The FontKerningAdjustment field is a signed integer that defines a value to be added to the advance value of the left character.
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">bytes</span>:ByteArray</code> &mdash; Bytes to read into
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">index</span>:uint</code> &mdash; Kerning index.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">offset</span>:uint</code> (default = <code>0</code>)<code></code> &mdash; Offset in provided ByteArray to start writing.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>uint</code> &mdash; Number of bytes written
+		 </td></tr></table></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Mercredi Avril 27 2011, 11:07 AM +02:00  </center></div></body></html><!--<br/>Mercredi Avril 27 2011, 11:07 AM +02:00  -->

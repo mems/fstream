@@ -1,0 +1,148 @@
+#summary Notes about developement
+
+= Optimisations =
+
+== Reduce HTTP loading time ==
+
+The chunked encoding allow to reduce data awaiting, by sending it directly when data readed, without a full buffering. In addition, reduce memory usage. See [http://tools.ietf.org/html/rfc2616#section-3.6.1 RFC 2616 - HTTP Chunked Transfer Coding].
+
+== Speed up file reading ==
+
+Use PHP native function `ord()` and `chr()` instead of more complete function `pack()` and `unpack()`.
+Reading or writing larger data blocs to manipulate it directly in memory (buffering).
+
+Use database reading LOB (if data chunks are larger than 4Ko) http://php.net/manual/pdo.lobs.php
+
+AS3: Some technics :
+	* http://philippe.elsass.me/2010/05/as3-fast-memory-access-without-alchemy/
+	* http://gskinner.com/talks/quickTO
+	
+_TODO:_ use GZipCompression (work for server cache files nor for chunked encoding) http://code.google.com/speed/page-speed/docs/payload.html#GzipCompression
+
+== Sort and uniqueness ==
+
+A quick method is using bit to save if a char is used or not:
+bit @0 = 1 if charcode U+0000 is present, bit @1 = 1 charcode U+0001 is present, etc.
+[01000010 01000101 00000000 ...] -> U+0001,U+0006,U+0009,U+0013,U+0015
+
+Compared to nested loops (or indexOf/lastIndexOf), it's reduce CPU usage, potentialy use more memory:
+- For Basic Multilingual Plane (plane 0, BMP) -> 65536 values (U+0000-U+FFFF), require 8192 bytes
+- For all Unicodes Planes (16 planes, BMP + SMP + SIP + Unassigned + SSP + PUA, http://en.wikipedia.org/wiki/Mapping_of_Unicode_characters#Planes) -> 1114112 values (U+0000-U+10FFFF), require 139264 bytes.
+	It's can be reduced to 49152 bytes if remove plane 3 to 13 (720896 values, U+30000–U+DFFFF Unassigned)
+
+Flash/JavaScript handle only 16 bits integers for characters code
+This method can be used for highter bits numbers. Example:
+For uint32 -> 4294967296 values (0x00000000 to 0xFFFFFFFF), require 536870912 bytes (537MB)
+
+In addition, the AVM take in memory 92 byte to store each ByteArray object.
+
+To read presence of a charcode U+XXXX, use:
+{{{
+var charCode:uint = 0xXXXX;
+var charCodeNeeded:Boolean = ((charMap[uint(charCode / 8)] >> (charCode % 8)) & 1) == 0;
+}}}
+
+To sort chars and get only uniques values:
+{{{
+var charCodeMap:ByteArray = new ByteArray();
+charCodeMap.length = 8192;
+var numChars:uint = 0;
+for(i = 0; i < length; i++)
+{
+	var charCode:uint = value.charCodeAt(i);
+	var byte:uint = charCodeMap[uint(charCode / 8)];
+	if(((byte >> (charCode % 8)) & 1) == 0)
+	{
+		charCodeMap[uint(charCode / 8)] = byte | (1 << (charCode % 8));
+		numChars++;
+	}
+}
+
+var charCodes:Array = new Array(numChars), j:uint = 0;
+for(i = 0, length = charCodeMap.length; i < length; i++)
+{
+	byte = charCodeMap[i];
+	for(y = 0; y < 8; y++)
+	{
+		if(((byte >> y) & 1) == 1)
+			charCodes[j++] = i * 8 + y;
+	}
+}
+
+return String.fromCharCode.apply(null, charCodes);
+}}}
+
+	* [http://jacksondunstan.com/articles/270 Sorting Vectors]
+	* [http://blog.inspirit.ru/?p=271 Faster Array Sort]
+	* [http://code.google.com/p/redshell/source/browse/core/Vector.as AVM Vector AS source]
+
+== Cache ==
+
+	* Server caching: http://httpd.apache.org/docs/2.2/caching.html
+	* Browser caching: http://code.google.com/speed/page-speed/docs/caching.html#LeverageBrowserCaching
+
+= Debugging =
+
+_TODO:_ use `memory_get_peak_usage()` to trace memory usage (max).
+_TODO:_ use [http://xdebug.org/ Xdebug]
+
+http://phplens.com/lens/php-book/optimizing-debugging-php.php
+
+= Transport and storage data format =
+
+_TODO:_ use more open, documented and supported format rather than specific format such as [http://people.mozilla.org/~jkew/woff/woff-spec-latest.html WOFF (Web Open Font Format)]. It need for support of new Flash 10 text engine. Which use new data format: CFF (Compact Font Format) based on OTF (Open Type Font).
+
+= Command line =
+
+== Shell scripting ==
+
+PHP command line script can start with _shebang_ (magic number `#!`) and location of followed by an command line interpreter, but not always at the same place on all UNIX compatible OS.
+	* linux default: `/bin/php`
+	* macport: `/opt/local/bin/php`
+	* builtin php mac: `/usr/bin/php`
+
+Solution:
+so use `#!/usr/bin/env php` to just use php executable whether it is
+This have no impact on script, `#` are used as simple line comment in PHP eq. of `//` comment.
+
+{{{
+#!/usr/bin/env php
+<?php
+echo 'test';
+?>
+}}}
+this allow to execute script like that:
+{{{
+$ ./script.php
+}}}
+or execute by specify command line interpreter (windows compatible)
+{{{
+$ php script.php
+}}}
+
+== Man page ==
+
+Man pages are usually stored in `/usr/man` or `usr/local/man` in the `manX/prog-name.X` file, where `X` is the man page section
+example: `/usr/man/man1/kill.1`
+
+Use `nroff -man <manpage>` to view the man page
+
+	* http://web.cecs.pdx.edu/~trent/gnu/groff/groff.html#SEC16
+	* http://www.fnal.gov/docs/products/ups/ReferenceManual/html/manpages.html
+	* http://www.schweikhardt.net/man_page_howto.html
+
+== CLI commands ==
+
+Command line terminal screen can be controled by characters sequences to colorize, manipulate cursor, etc.
+
+PHP Example: clear screen
+{{{
+<?php
+echo chr(27)."[H".chr(27)."[2J";
+?>
+}}}
+
+	* http://www.it.usyd.edu.au/~tapted/ansi.html
+	* http://en.wikipedia.org/wiki/ANSI_escape_code
+	* http://ascii-table.com/ansi-escape-sequences.php
+	* http://wiki.archlinux.org/index.php/Color_Bash_Prompt

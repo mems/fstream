@@ -1,0 +1,8 @@
+<project name="FontStream - Waterfall demo" default="compile-swf-debug">
+	<fdt.loadProjectProperties projectname="FontStream - Waterfall demo" />
+	
+	<target name="compile-swf-debug" description="Compile debug">
+		<fdt.launch.application projectname="${FDTProject}" mainclass="${FDTProjectPath}/src/fstream/display/Waterfall.mxml" target="${FDTProjectPath}/build/waterfall.swf" debug="true" startswf="true" swflauncher="Adobe Flash Player" swflocation="build/waterfall.swf" />
+	</target>
+</project>
+

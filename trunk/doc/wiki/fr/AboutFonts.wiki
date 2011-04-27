@@ -1,0 +1,108 @@
+#summary A propos des polices et des licences d'utilisation
+
+= Polices =
+
+Une *police* est un style particulier d'une *fonte* (gras, italic, light, etc.). Une *fonte* est donc un ensemble de *polices*. En anglais une *police* s'appelle _font_ et une *fonte* s'appelle _type_.
+
+Les fontes comme [http://developer.apple.com/fonts/lastresortfont/ LastResort] ou [http://scripts.sil.org/cms/scripts/page.php?item_id=UnicodeBMPFallbackFont Unicode BMP Fallback SIL] sont utilisées pour le débugage. Elles donnent respectivement les sets et les codes Unicode de caractères. Elles sont utilisé dans certains OS comme police de "secours" au cas où une police importante manquerai ou ne disposerai pas de certains caractères à afficher.
+
+La plupart des polices n'ont pas tous les dessins des 65535 caractères unicodes, ceux-ci peuvent être affiche sous la forme d'un rectangle, un `?` dans un losange ou simplement ne pas apparaitre (en fonction de la police).
+
+= Fontes incluses =
+
+Est inclut, un package de fonte permettant de faire tourner des démos. Les fichiers de licences accompagnent les fichiers de police. La plupart sont sous licence Open Font License, GNU General Public License, Creative Commons "Attribution-NonCommercial" ou Creative Commons "Attribution-ShareAlike".
+
+= Licences =
+
+Il est nécessaire de bien connaitre les licences des éléments tiers que l'on utilise (fontes, librairies, visuels, etc.). Il peut exister plusieurs licences pour un même élément. En outre, pour une même police, une fonderie peux interdire l'utilisation de celle ci sur un site web (via [https://developer.mozilla.org/en/css/@font-face @font-face] en CSS) alors qu'une autre peux l'autoriser.
+
+Certaines licences de polices n'authorisent pas l'embarquement dans un document. Il n'est donc pas possible de les utiliser avec Flash autrement qu'en tant que police système. Certaines fonderies le permettent, mais seulement par l'obtention d'une licence (majoritairement payante).
+
+FontStream propose un système de distribution progressive resposant sur le format SWF (embarquant une police), similairement aux [Alternatives#Bibliothèque_chargée_dynamiquement Bibliothèque chargée dynamiquement]. *Toutes les polices dont la licence n'interdisent pas l'embarquement dans un document SWF peuvent donc être utilisées avec FontStream.*
+
+La position chez Adobe sur ce sujet :
+{{{
+Subject: Re: Font licensing - Font container format
+From: Christopher Slye <cslye arobase adobe.com>
+Date: Wed, 23 Mar 2011 12:50:40 -0400
+To: Memmie Lenglet <memmie arobase lenglet.name>
+
+Thanks for you question. The simple answer is that Adobe considers font data embedded in PDF and SWF different than WOFF.
+
+The more complicated answer:
+
+The WOFF file format is described as a container in the WOFF spec, but that is the W3C's definition, not Adobe's. (I agree with the description, but I mention it to explain that Adobe's font licenses must depend on their own language, not any definition found elsewhere.)
+
+WOFF is a very simple wrapper that can be used to transport an entire font, and with optional, supplementary data. When font data is embedded in PDF or SWF, it ceases to become a self-contained font, and becomes a component of that document -- unusable as a complete font elsewhere.
+
+Please note that I can give you some general comments and advice here, but in the end, your own font's license is what determines what use is and isn't permitted.
+
+Let me know if I can help further.
+
+Regards,
+Christopher
+
+
+* * * *
+Christopher Slye
+Technical Product Manager, Type
+Adobe Systems, Inc.
+San Jose, California
+
+
+On Mar 22, 2011, at 1:29 PM, Memmie Lenglet wrote:
+
+> Hi,
+> 
+> I just read your post about the position of Adobe on Web fonts licencing:
+> http://blogs.adobe.com/typblography/2010/10/web-font-licensing.html
+> 
+> I'm working on a derived system of siFR.
+> 
+> Actually, siFR load one SWF (where a font is embeded) per font to 
+> display any text with this font.
+> But it impossible to do that in some Asian texts where more than 10k 
+> chars glyphs needed (and a equivalent SWF will weigh few MB)
+> 
+> So my solution, instead of loading whole glyphs, load few SWF depending 
+> which char will be displayed.
+> For example you display this text: "Hello world!", where the fellow (8) 
+> glyphs are needed: "!", "d", "e", "H", "l", "o", "r", "w". I'm loading 8 
+> glyphs insteand more than one/two hundred for latin languages.
+> 
+> But I found a contradiction in what you said, so I not sure about legacy 
+> against font licences you provide:
+> "Adobe does not allow the use of fonts on the web in any format, WOFF or 
+> otherwise."
+> "EULA refers to “document embedding,” it’s referring to electronic 
+> documents like PDF and SWF (Flash) files"
+> "Adobe-owned fonts may be used with both sIFR and Cufón."
+> 
+> sIFR use font on the web in SWF format, so what the difference you made 
+> between a SWF, only used to containing a font, the WOFF format (font 
+> container - see below) or a proprietary format containing font data/glyps ?
+> 
+> "WOFF should be regarded as a container format or "wrapper" for font 
+> data" - http://www.w3.org/TR/WOFF/#Introduction
+> 
+> So you said WOFF format is not allowed, but if instead I load in a HTML 
+> document, with JavaScript, a SWF/PDF file and I parse it to use it in 
+> CSS, it's OK (I'm not loading a font file)?
+> 
+> 
+> Thank if you can light me up
+> 
+> Memmie Lenglet
+> http://memmie.lenglet.name
+}}}
+
+	* http://partners.adobe.com/public/developer/en/acrobat/sdk/FontPolicies.pdf
+	* http://www.microsoft.com/typography/tt/ttf_spec/ttch02.doc
+	* [http://www.microsoft.com/typography/otspec/os2.htm#fst OpenType fsType entry]
+	* http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/swfutils/src/java/flash/fonts/FSType.java
+
+= Liens connexes =
+
+	* http://cg.scs.carleton.ca/~luc/fonts.html
+	* http://typophile.com/node/18207
+	* http://fr.wikipedia.org/wiki/Police_d%27%C3%A9criture

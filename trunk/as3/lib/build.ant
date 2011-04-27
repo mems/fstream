@@ -1,0 +1,25 @@
+<project name="FontStream - Library" default="compile-swc">
+	<fdt.loadProjectProperties projectname="FontStream - Library" />
+	
+	<target name="compile-swc" description="Compile library fontstream.swc">
+		<fdt.launch.library projectname="${FDTProject}" compilerarguments=" -debug=false -optimize=true -target-player=${FDTProjectPlayerVersion}" target="${FDTProjectPath}/build/fontstream.swc" />
+	</target>
+	<target name="generate-asdoc" description="Generate ASDoc"> 
+		<exec executable="${FDTProjectSdkPath}/bin/asdoc.exe">
+			<!--
+			<arg value="-keep-xml=true"/> 
+			<arg value="-skip-xsl=true"/>
+			-->
+			<arg value="-source-path"/>
+			<arg value="${FDTProjectPath}/src"/>
+			<arg value="-doc-sources"/>
+			<arg value="${FDTProjectPath}/src"/>
+			<arg value="-window-title"/>
+			<arg value="${FDTProject}"/>
+			<arg value="-main-title"/>
+			<arg value="${FDTProject}"/>
+			<arg value="-output"/>
+			<arg value="${FDTProjectPath}/doc/asdoc"/>
+		</exec>
+	</target>
+</project>

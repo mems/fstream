@@ -1,0 +1,17 @@
+#summary Historique et roadmap
+
+1.5
+	- réécriture de la librarie
+	- Optimisation (CPU, memory: utilisation des données binaires brutes plutôt que leur représentation objet)
+	- Support du format pur SWF
+	- Ajout de l'export SWC
+1.7
+	- Support des collections de police
+	- Documentation (FR + EN)
+	- Ajout de l'export Fat SWC (incluant l'asdoc)
+2
+	- Support du FTE (Flash Text Engine, CFF - DefineFont4)
+	- Support du format WOFF. Cf. [DeveloperNotes#Transport_and_storage_data_format Transport and storage data format]
+2.5
+	- Version cliente JavaScript (CSS base64 format WOFF, ttf ou eot)
+	- Support du PDF et du SVG
