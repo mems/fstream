@@ -1,0 +1,3 @@
+#summary Server side
+
+See [DataGenerator using fsdgen tool] page

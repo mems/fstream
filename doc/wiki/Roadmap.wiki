@@ -1,0 +1,17 @@
+#summary History and roadmap
+
+1.5
+	* Rewrite of lib
+	* Optimisazion (CPU, memory: use raw binary data instead of its objects representations)
+	* SWF format support
+	* Add SWC releases
+1.7
+	* Font collection support
+	* Documentation (FR + EN)
+	* Add Fat SWF releases (include asdoc files)
+2
+	* FTE support (Flash Text Engine, CFF - DefineFont4)
+	* WOFF format support. See [DeveloperNotes#Transport_and_storage_data_format Transport and storage data format]
+2.5
+	* JavaScript lib version (CSS base64 format WOFF, ttf or eot)
+	* PDF and SVG font format support

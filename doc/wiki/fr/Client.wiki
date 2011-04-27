@@ -1,4 +1,5 @@
 #summary Comment utiliser la partie client
 
-Voir la page [Examples des exemples]
-Se réferer à la documentation asdoc
+Voir la page [Examples des exemples].
+
+Se réferer à la documentation asdoc.
