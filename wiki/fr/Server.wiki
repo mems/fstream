@@ -1,0 +1,3 @@
+#summary Préparation du serveur
+
+Voir la page [DataGenerator utilisation de l'outil fsdgen]
