@@ -21,27 +21,27 @@ Supported font file types are:
 
 === Library ===
 
-Il est possible d'embarquer une police à l'aide de la bibliothèque de Flash Professional, cependant avec cette méthode il est impossible de maitriser quels sont les caractères qui vont être embarqués (sauf depuis CS5).
+It's possible to use Flash Professional for font embedding through library. But it's impossible to define which chars will be embedded until CS5 (only Latin1 chars was embedded).
 
-=== Champ texte ===
+=== Text field ===
 
-[http://help.adobe.com/en_US/flash/cs/using/WSb03e830bd6f770ee21a3597d124daee0526-8000.html Embed fonts for consistent text appearance]
+	* [http://help.adobe.com/en_US/flash/cs/using/WSb03e830bd6f770ee21a3597d124daee0526-8000.html Embed fonts for consistent text appearance]
 
 == Flex SDK ==
 
-Cela regroupe l'outil en ligne de commande, Flash Builder et Flash Professional (qui l'utilise pour interpréter les balises metadata).
+It's used for command line compilation, by Flash Builder and Flash Professional (since CS4, for metadata tags compilation).
 
 === Metadata tags ===
 
-Ces balises sont interprété au moment de la compilation du code ActionScript.
+This tags are used during ActionScript code compilation.
 
 {{{
-[Embed(source="<sourceFile>", propriété1, propriété2, …])]
+[Embed(source="<sourceFile>", property1, property2, …])]
 }}}
 
-Propriétés de la balise :
+Tag properties :
 
-|| *Propriété*								|| *Valeur*																																					|| *Description* ||
+|| *Property*								|| *Value*																																					|| *Description* ||
 || `systemFont`^2^							|| `<font-name>`																																			|| Nom d'une police installé sur le système ||
 || `source`^2^								|| `<location>`																																				|| Emplacement du fichier de police ou du ficher SWF ||
 || `src`^1^^2^								|| `url("<location>")`																																		|| Emplacement du fichier de police ||
@@ -55,15 +55,15 @@ Propriétés de la balise :
 || `advancedAntiAliasing`					|| `true` | `false`																																			|| Active ou désactive les informations pour l'antialiasing avancé. `true` par défaut. ||
 || `unicodeRange`							|| `<unicode-range>` | `<range-name>`																														|| Définit par [http://www.w3.org/TR/1998/REC-CSS2-19980512/fonts.html#descdef-unicode-range CSS2 unicode range]. `U+0000-U+FFFF` par défaut. ||
 
-	* _^1^ Supporté seulement dans une définition CSS_
-	* _^2^ L'une de ces propriétés est obligatoire_
-	* _^3^ Peux être obligatoire en fonction du format de la source_
-	* _^4^ Peux être obligatoire en fonction du format de la source et des !FontManager utilisé_
-	* _^5^ Dans les version avant la build 7972 du Flex SDK la propriété s'appelais `embedAsCFF`_
+	# _Supporté seulement dans une définition CSS_
+	# _L'une de ces propriétés est obligatoire_
+	# _Peux être obligatoire en fonction du format de la source_
+	# _Peux être obligatoire en fonction du format de la source et des !FontManager utilisé_
+	# _Dans les version avant la build 7972 du Flex SDK la propriété s'appelais `embedAsCFF`_
 
-_Note : D'autres propriété existent mais ne sont pas documentées ou utilisées pour l'intégration de polices._
+_Note: Some others properties are not listed here, not used for font embedding or are undocumented._
 
-Exemple de balise lié à une classe :
+Example of class linked tag:
 {{{
 package example.text
 {
@@ -77,15 +77,15 @@ package example.text
 }
 }}}
 
-Exemple de balise lié à une propriété ou constante :
+Example of property or constante linked tag:
 {{{
 [Embed(systemFont="Arial Unicode MS" unicodeRange="U+0061-U+007A" mimeType="application/x-font")]
 public static const ARIAL_UNICODE_MS_CLASS:Class
 }}}
 
-*Attention : la classe que `ARIAL_UNICODE_MS_CLASS` va contenir est de type `mx.core.FontAsset`. Ce qui aura comme conséquence d'embarquer quelques classes du framework Flex même dans un projet pur AS3 (augmenter le poids). Préférer la méthode de la balise lié à une classe.*
+*Attention: `ARIAL_UNICODE_MS_CLASS` will contains a class of type `mx.core.FontAsset`. It will embed few Flex classes (useless weight). Favour class linked tag way.*
 
-Exemple avec une police multi styles :
+Example of a type with a multiple styles (fonts) :
 {{{
 //Helvetica Neue
 [Embed source="Helvetica_Neue.otf" fontName="Helvetica Neue" fontStyle="regular" fontWeight="regular" mimeType="application/x-font-opentype"]
@@ -103,9 +103,9 @@ public class EmbeddedFont$HelveticaNeueBold extends Font{}
 [Embed source="HelveticaNeue.ttc" fontName="Helvetica Neue" fontStyle="italic" fontWeight="bold" mimeType="application/x-font-truetype-collection"]
 public class EmbeddedFont$HelveticaNeueBoldItalic extends Font{}
 }}}
-_Note : Les styles ne sont pas obligés de tous venir de la même collection (`*.ttc`, `*.dfont` ou `*.swf`)._
+_Note: Styles could be provided by differents collections (`*.ttc`, `*.dfont` ou `*.swf`)._
 
-Exemple avec d'autres style que bold et italic
+Example with other styles than bold and italic
 {{{
 //Helvetica Neue Light
 [Embed source="HelveticaNeue.ttc" fontName="Helvetica Neue Light" fontStyle="regular" fontWeight="regular" mimeType="application/x-font-truetype-collection"]
@@ -116,27 +116,27 @@ public class EmbeddedFont$HelveticaNeueLight extends Font{}
 public class EmbeddedFont$HelveticaNeueLightItalic extends Font{}
 }}}
 
-*Attention : Toutes le polices n'étant pas nommé `italic` | `oblique` et `bold` | `heavy` doivent avoir `fontStyle` et `fontWeight` égalaux à `normal` et le `fontName` ou le `systemFont` à la valeur exact du nom la police*
+*Attention: All fonts with style differents than `italic` | `oblique` and `bold` | `heavy` must have there `fontStyle` and `fontWeight` equal to  `normal` and `fontName` or `systemFont` equal to exact font name*
 
-Les formats de police supporté sont :
-	* Fichier SWF contenant la police
-	* TrueType (`*.ttf`)
-	* TrueType Collections (`*.ttc`)
-	* OpenType (`*.otf`)
+Supported font file types are:
+	* SWF file embedding a font
+	* !TrueType (`*.ttf`)
+	* !TrueType Collections (`*.ttc`)
+	* !OpenType (`*.otf`)
 	* Mac Data Fork Fonts (`*.dfont`)
-	* Mac Resource Fork TrueType Suitcases (sans extension)
-Pour les autres formats, utiliser une autre solution
+	* Mac Resource Fork !TrueType Suitcases (without extension)
 
-_Note : Il existe des façon similaire à la balise metadata d'embarquer une resource (directives MXML `Embed(…)` et CSS `@Embed(…)`) mais ne sont pas toutes utilisable pour embarquer une police_
+_Note: Other ways exist to embed an asset (MXML instruction `Embed(…)` and Flex CSS `@Embed(…)`) but could not always used to embed a font._
 
 [http://blog.johannest.com/2010/01/20/a-property-list-for-embedding-fonts-with-the-emded-metadata-tag/ A property list for embedding fonts with the Emded metadata tag]
 [http://blog.johannest.com/2010/05/19/on-using-the-embed-tag-with-fontstyle-fontweight-properties/ On using the Embed tag with fontStyle & fontWeight properties]
 [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf60546-7ffb.html Syntax for embedding assets]
 
-=== Les styles CSS ===
+=== Flex styles ===
 
-Les CSS sont utilisé pour appliquer un style aux éléments d'interface du framework Flex.
-Cette solution particulière permet de déclarer l'utilisation d'une police dans un fichier MXML. Elle se comporte de façon similaire à la balise metadata décrite ci dessus.
+CSS could be used to stylish interface components of Flex framework.
+
+This method used to define a font in Flex. It's works pretty similar to metadata tag (see above)
 
 {{{
 @font-face {
@@ -147,7 +147,7 @@ Cette solution particulière permet de déclarer l'utilisation d'une police dans
 
 @font-face {
 	src:url("../assets/MyriadWebPro-Bold.ttf");
-	fontFamily: "Myriad Pro"";
+	fontFamily: "Myriad Pro";
 	fontWeight: bold;
 	embedAsCFF: false;
 }
@@ -162,17 +162,15 @@ Cette solution particulière permet de déclarer l'utilisation d'une police dans
 
 == fontswf ==
 
-Cet outil en ligne de commande est fournit avec la version non open source du Flex SDK. Il permet de compiler directement une police dans un SWF, mais ne la lie pas à une classe ActionScript (SWF tag `SymbolClass`).
-
-_Note : Cet outils embarque l'ensemble des styles (polices) disponible pour la fonte fournie._
+This command line tool is given with non-opensource Flex SDK version. It's used to embed a font in a SWF file, without make linkage with an ActionScript class (SWF tag `SymbolClass`).
 
 {{{
 $ fontswf [options] <font-file>
 }}}
 
-Paramètres de l'utilitaire
+Arguments:
 
-|| *Paramètre*							|| *Description* ||
+|| *Argument*							|| *Description* ||
 || `-a` | `-alias <font-name-alias>`	|| Définit un alias pour la police, par défaut utilise le nom de la police. Nom de la police qu'il faudra utiliser dans le SWF ||
 || `-b` | `-bold`						|| Embarquer la version grasse de la police ||
 || `-i` | `-italic`						|| Embarquer la version italique de la police ||
@@ -181,32 +179,29 @@ Paramètres de l'utilitaire
 || `-3`									|| Génère une police SWF pour les applications à base de `TextField` ||
 || `-4`									|| Génère une police SWF pour les applications qui supportent le CFF (`flash.text.engine`, Flash 10 uniquement). Option par défaut ||
 
-*Attention : FontStream n'est pour l'instant pas compatible avec les polices CFF*
+*Attention: Currently !FontStream is not ready for CFF fonts.*
 
-Exemple d'utilisation :
+Usage example:
 {{{
 $ fontswf -3 -u U+0020-007F -bold -o ~/myboldfont.swf ~/myboldfont.ttf
 }}}
 
-Cela va embarquer en non CFF les caractères de Latin Basique de la police `myboldfont.ttf` et générer le SWF `myboldfont.swf`
+This will embed Latin Basic chars of font `myboldfont.ttf` as non CFF in SWF `myboldfont.swf`.
 
-Les formats de police supporté sont :
-	* TrueType (`*`.ttf)
-	* TrueType Collections (`*`.ttc)
-	* OpenType (`*`.otf)
+Supported font file types are:
+	* !TrueType (`*`.ttf)
+	* !TrueType Collections (`*`.ttc)
+	* !OpenType (`*`.otf)
 	* Mac Data Fork Fonts (`*`.dfont)
-	* ~~Type 1 PostScript~~ (Ce type n'est pas explicitement indiqué)
+	* _Type 1 !PostScript_
 
 	* [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000 Using the fontswf utility]
 	* [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e09.html About the font managers]
 	* [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e04.html Setting character ranges]
 	* [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e06.html Using multiple typefaces]
 
-== Autres outils ==
+== Other tools ==
 
-Il existe une multitude d'outils permettant de générer des fichiers SWF embarquant une police.
-
-Liste non exhaustive :
  	* [http://www.swfmill.org/ swfill]
  	* [http://code.google.com/p/hxswfml/ hxswfml]
  	* [http://www.swftools.org/ swftools]

@@ -36,7 +36,7 @@ Avantages :
 	* Peux être facilement utilisée en commun sur plusieurs projets
 Inconvénients :
 	* Peut devenir très lourd à charger avec des polices Unicode
-	* Impossible d'influer sur l'emplacement de la bibliothèque, sans recompiler le SWF principal ou la bibliothèque
+	* Impossible de changer l'emplacement de la bibliothèque ou du SWF principale, sans devoir recompiler
 
 	* [http://help.adobe.com/fr_FR/flash/cs/using/WSd60f23110762d6b883b18f10cb1fe1af6-7dc9a.html Partage des actifs de bibliothèque]
 	* [http://swfmill.org/doc/using-swfmill.html#shared swfmill - Using shared libraries]
@@ -88,7 +88,7 @@ _Note 2 : Il semble d'après un commentaire dans la [http://opensource.adobe.com
 
 == Génération dynamique de SWF ==
 
-_Cette solution, au niveau serveur peux être utilisé pour FontStream_
+_Cette solution, au niveau serveur peux être utilisé pour !FontStream_
 
 Il est possible coté server de générer à la volé un SWF par l'intermédiaire d'un [http://fr.wikipedia.org/wiki/Common_Gateway_Interface CGI] (Flex pour Apache, swfmill, etc.), un SWF contenant uniquement un champ texte statique et les caractères de polices qu'il a besoin.
 
@@ -107,4 +107,4 @@ Inconvénients :
 	* Une certaine complexité de la mise en place de la partie server (impossible sur certains serveurs)
 	* Nécessite une bonne maitrise des ressources inutilisés coté client (`loaderInstance.unloadAndStop()`) ^1^
 	
-	* _^1^ Si, pour FontStream, cette solution est retenue pour la partie serveur, ces inconvéniants disparaissent_
+	 " _Si, pour !FontStream, cette solution est retenue pour la partie serveur, ces inconvéniants disparaissent_
