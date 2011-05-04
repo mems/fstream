@@ -1,6 +1,8 @@
 <project name="FontStream - Library" default="compile-swc">
 	<fdt.loadProjectProperties projectname="FontStream - Library" />
-	
+	<!--
+	In case of Ant "project name" error set in FDT external tool configuration "Use same JRE as the workspace"
+	-->
 	<target name="compile-swc" description="Compile library fontstream.swc">
 		<fdt.launch.library projectname="${FDTProject}" compilerarguments=" -debug=false -optimize=true -target-player=${FDTProjectPlayerVersion}" target="${FDTProjectPath}/build/fontstream.swc" />
 	</target>

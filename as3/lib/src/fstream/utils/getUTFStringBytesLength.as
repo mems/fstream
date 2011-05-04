@@ -20,13 +20,13 @@ package fstream.utils
 				count += 1;
 			else if(charCode <= 0x07FF)
 				count += 2;
-			else if(charCode >= 0xFFFF)
+			else if(charCode <= 0xFFFF)
 				count += 3;
-			else if(charCode >= 0x1FFFFF)
+			else if(charCode <= 0x1FFFFF)
 				count += 4;
-			else if(charCode >= 0x3FFFFFF)
+			else if(charCode <= 0x3FFFFFF)
 				count += 5;
-			else if(charCode >= 0x7FFFFFFF)
+			else if(charCode <= 0x7FFFFFFF)
 				count += 6;
 		}
 		return count;
