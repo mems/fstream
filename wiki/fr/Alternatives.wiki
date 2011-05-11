@@ -29,7 +29,7 @@ Il existe 2 types de bibliothèque externe : la bibliothèque de partage à l'ex
 == Bibliothèque de partage à l'exécution ==
 
 Ce type de bibliothèque est géré nativement par le player Flash qui par l'intermédiaire d'un tag SWF `ImportAsset2` connais l'emplacement et les élements à récuperer de la bibliothèque externe.
-Pour utiliser cette fonctionnalité, il faut utiliser dans Flash Professional, dans la fenêtre propriétés d'éléments de bibiliothèque, la partie _Partage_.
+Cette fonctionnalité est accessible au niveau de la partie _Partage_ de la fenêtre propriétés d'éléments de bibiliothèque de Flash Professional.
 Le fichier externe doit comporter le tag SWF `ExportAssets` pour indiquer quelques sont les éléments importables.
 
 Avantages :
@@ -37,6 +37,7 @@ Avantages :
 Inconvénients :
 	* Peut devenir très lourd à charger avec des polices Unicode
 	* Impossible de changer l'emplacement de la bibliothèque ou du SWF principale, sans devoir recompiler
+	* Impossible de connaitre la progression du chargement
 
 	* [http://help.adobe.com/fr_FR/flash/cs/using/WSd60f23110762d6b883b18f10cb1fe1af6-7dc9a.html Partage des actifs de bibliothèque]
 	* [http://swfmill.org/doc/using-swfmill.html#shared swfmill - Using shared libraries]
@@ -82,7 +83,7 @@ _Note : Adobe appelle ces SWF signé des RSL (Runtime Shared Library)_
 
 _Note 2 : Il semble d'après un commentaire dans la [http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/swfutils/src/java/flash/swf/TagValues.java source de TagValues.java du Flex SDK] que le SWF Tag `ImportAsset2` supporte aussi les hash "SHA-1" de fichiers SWZ_
 
-	* [http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/net/URLRequest.html#digest flash.net.URLRequest.digest]
+	* [http://help.adobe.com/fr_FR/FlashPlatform/reference/actionscript/3/flash/net/URLRequest.html#digest flash.net.URLRequest.digest]
 	* [http://help.adobe.com/fr_FR/FlashPlatform/reference/actionscript/3/fl/rsl/package-detail.html fl.rsl package]
 	* [http://www.adobe.com/devnet/flex/articles/flash_player_cache.html Improving Flex application performance using the Flash Player cache]
 

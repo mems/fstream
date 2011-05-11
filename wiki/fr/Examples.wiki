@@ -94,3 +94,9 @@ package
 = Waterfall =
 
 [http://code.google.com/p/fstream http://fstream.googlecode.com/svn/wiki/WaterfallScreenCapture.png]
+
+= Cartier.com =
+
+[http://www.cartier.com Cartier.com]
+
+Le site utilise une ancienne version de !FontStream

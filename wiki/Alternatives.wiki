@@ -2,7 +2,7 @@
 
 = System font =
 
-Méthode la plus simple, la plus exigeante en terme d'utilisation. Elle permet d'utiliser la police installé sur le poste de l'utilisateur, mais ne permet pas d'utiliser des effets graphiques ou de transformation (blend modes, filters, rotation, scale, etc.).
+The simplest, more demanding. Allow device font (if font installed on user's device) to be used, but disallow graphical and transformation effets like blend modes, filters, rotation, scaling.
 
 Pro :
 	* Simplest and lightest
@@ -12,49 +12,50 @@ Con :
 
 = Embed a font =
 
-Méthode primitive, mais utile dans les cas où l'on a besoin d'embarquer quelques police en Latin1 ou justes quelques caractères.
+Primitive way, usefull when we need to embed a font with only for Latin1 text or just for few chars.
 
 Advantages :
 	* Simple only for few fonts
 Disadvantages :
-	* Add weight needed to be loaded, depends number of fonts, there complexity and number of embedded chars
+	* Add weight needed to be loaded, depends number of fonts, their complexity and number of embedded chars
 	* Could have heavy for Unicode fonts
 
 	* [EmbedFont Embed a font in a SWF]
 
 = External libraries =
 
-Il existe 2 types de bibliothèque externe : la bibliothèque de partage à l'exécution et la bibliothèque chargé dynamiquement. Elles permet d'externaliser un partie de l'application (polices, classes, images, etc.), permettant ainsi d'alléger le binaire principal de l'application.
+2 kind of external libraries exsiting: shared library and runtime shared library (loaded dynamically). Used to externalize an application part, like fonts, code, images, etc., reducing the main application binary weight.
 
-== Shared Library ==
+== Shared library ==
 
-Ce type de bibliothèque est géré nativement par le player Flash qui par l'intermédiaire d'un tag SWF `ImportAsset2` connais l'emplacement et les élements à récuperer de la bibliothèque externe.
-Pour utiliser cette fonctionnalité, il faut utiliser dans Flash Professional, dans la fenêtre propriétés d'éléments de bibiliothèque, la partie _Partage_.
-Le fichier externe doit comporter le tag SWF `ExportAssets` pour indiquer quelques sont les éléments importables.
+It's supported natively by Flash Player via the usage of SWF tag `ImportAsset2`. It's know where resources are located and try load it automatically.
+This functionality could be used in Flash Professional, at _Share_ in property panel of library elements.
+The external SWF must contains the SWF tag `ExportAssets` defining importable elements.
 
 Advantages :
 	* Could be used in common for multiple projects
 Disadvantages :
-	* Could have heavy for Unicode fonts
-	* Couldn't change location (library and/or main SWF) without need to recompile
+	* Could have heavy weight for Unicode fonts
+	* Can't change location (library and/or main SWF) without need to recompile
+	* Handle load progression is impossible
 
 	* [http://help.adobe.com/en_US/flash/cs/using/WSd60f23110762d6b883b18f10cb1fe1af6-7dc9a.html Sharing library assets]
 	* [http://swfmill.org/doc/using-swfmill.html#shared swfmill - Using shared libraries]
 	* [http://jeanphiblog.media-box.net/dotclear/index.php?2009/06/18/323-flash-cs4-bibliotheque-partagee-shared-library-en-as3 Bibliothèque partagée (Shared Library) en AS3]
 
-== Bibliothèque chargée dynamiquement ==
+== Dynamic shared library ==
 
-Même méthode que la précédente, mais cette fois ci l'emplacement de la bibliothèque n'est pas fixé à l'avance et n'est pas géré de façon native. Ce qui permet en fonction de certains variables (localisation, version du player, geolocalisation, etc.) de charger une bibliothèque plutôt qu'une autre.
+Same way describe below, but made dynamically (with code), where the location is not predefined. Be able to determine location depending variables like localisation, player version, geolocalisation, etc.
 
-	# charger la bibliothèque avec `loaderInstance.load(urlRequestInstance);`
-	# une fois la bibliothèque complètement chargé, déclarer la police `Font.registerFont(loaderInstance.contentLoaderInfo.applicationDomain.getDefinition("fontClassName") as Class);`
+	# load the library container with `loaderInstance.load(urlRequestInstance);`
+	# once completly loaded, register font `Font.registerFont(loaderInstance.contentLoaderInfo.applicationDomain.getDefinition("fontClassName") as Class);`
 
 Advantages :
 	* Could be used in common for multiple projects
 Disadvantages :
 	* Need handling load of external SWF and its content
-	* Could have heavy for Unicode fonts
-	* Need to link font to an ActionScript class (with the SWF tag `SymbolClass`)
+	* Could have heavy weight for Unicode fonts
+	* Need to link font to an ActionScript class (with the SWF tag `SymbolClass`) in library
 
 	* [http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/Loader.html flash.display.Loader]
 	* [http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/text/Font.html flash.display.Font]
@@ -64,38 +65,38 @@ Disadvantages :
 
 _Since FlashPlayer 9.0.115.0_
 
-Il est possible de signer les SWF (`*.swz`). Ce qui permet de profiter d'un cache persistant crossdomain du FlashPlayer pour accélérer les chargements de bibliothèque.
-Une fois ce SWF chargé, celui-ci reste _Ad vitam æternam_ stocké sur le poste client sous un identifiant unique qui lui permet d'être utilisé par plusieurs domaines différents (qui doivent tous disposer de l'original).
+SWF files could be signed (`*.swz`). It's enable crossdomain cache of FlashPlayer, speeding load of same libraries on multiple domains.
+Once the signed SWF loaded, this one is keept _Ad vitam æternam_ on user device under a unique ID which allow access to other domains (but on all domains the same original must be present in case of).
 
 {{{
 var requestInstance:URLRequest = new URLRequest("repository location of SWZ file");
-requestInstance.hash = "SHA-256 key";//Quelque soit l'emplacement du fichier, c'est le hash qui permet de l'identifier et de le rapatrier depuis le cache, dans le cas échant depuis l'URL fournie
-urlLoaderInstance.load(requestInstance);//le chargement d'un SWZ ne fonctionne qu'avec un URLLoader
+requestInstance.hash = "SHA-256 key";//Where located the file is, the hash permit to identify it and get back from cache directly or if it's not present, loaded from provided URL
+urlLoaderInstance.load(requestInstance);//The load of SWZ work only with an URLLoader
 
-[…]//Un fois que le fichier est chargé complètement 
+[…]//Once the file completly loaded
 
 var loaderInstance:Loader = new Loader();
-loaderInstance.load(urlLoaderInstance.data);//charge le contenu du SWF signé
+loaderInstance.load(urlLoaderInstance.data);//load bytes of the SWZ
 }}}
 
-_Note: Adobe call that signed SWF, RSL (Runtime Shared Library)_
+_Note: Adobe call signed SWF: RSL (Runtime Shared Library)_
 
-_Note 2: Il semble d'après un commentaire dans la [http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/swfutils/src/java/flash/swf/TagValues.java source de TagValues.java du Flex SDK] que le SWF Tag `ImportAsset2` supporte aussi les hash "SHA-1" de fichiers SWZ_
+_Note 2: It seem according comment in [http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/swfutils/src/java/flash/swf/TagValues.java source of TagValues.java from Flex SDK] that SWF Tag `ImportAsset2` support also "SHA-1" hash for SWZ_
 
 	* [http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/net/URLRequest.html#digest flash.net.URLRequest.digest]
-	* [http://help.adobe.com/fr_FR/FlashPlatform/reference/actionscript/3/fl/rsl/package-detail.html fl.rsl package]
+	* [http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/fl/rsl/package-detail.html fl.rsl package]
 	* [http://www.adobe.com/devnet/flex/articles/flash_player_cache.html Improving Flex application performance using the Flash Player cache]
 
 == Dynamic SWF generation ==
 
 _It could be used, server side for !FontStream_
 
-Il est possible coté server de générer à la volé un SWF par l'intermédiaire d'un [http://fr.wikipedia.org/wiki/Common_Gateway_Interface CGI] (Flex pour Apache, swfmill, etc.), un SWF contenant uniquement un champ texte statique et les caractères de polices qu'il a besoin.
+Server side, it's possible to generate a SWF on the fly with a [http://fr.wikipedia.org/wiki/Common_Gateway_Interface CGI] (Flex for Apache, swfmill, etc.), contais one static textfield with needed font chars.
 
-Coté client, un simple appel HTTP, permet de récupère celui ci et de l'afficher :
+Client side, a simple HTTP call, allow load of it and display :
 {{{
-displayObjectContainerInstance.addChild(loaderInstance);//ajoute le loader à la display liste
-loaderInstance.load(urlRequestInstance);//lance le chargement
+displayObjectContainerInstance.addChild(loaderInstance);//add the loader to the displaylist
+loaderInstance.load(urlRequestInstance);//start loading
 }}}
 
 Advantages :
@@ -104,7 +105,7 @@ Advantages :
 Disadvantages :
 	* Disk and CPU usage, convert format (TTF to SWF)
 	* Limited usage to dynamic text field, can't handle cumulative resources (successive additions of previous load) ^1^
-	* Complex server side setting up (could be impossible with some configuration)
+	* Complex server side setting up (could be impossible with specific configurations)
 	* Need good practices to handle unused ressources client side (`loaderInstance.unloadAndStop()`) ^1^
 	
-	# _This disadvantage not exist if for !FontStream, this way is used server side_
+	# _This disadvantage not exist if, for !FontStream, this way is used server side_

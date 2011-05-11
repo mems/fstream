@@ -6,11 +6,11 @@ Une *police* est un style particulier d'une *fonte* (gras, italic, light, etc.).
 
 Les fontes comme [http://developer.apple.com/fonts/lastresortfont/ LastResort] ou [http://scripts.sil.org/cms/scripts/page.php?item_id=UnicodeBMPFallbackFont Unicode BMP Fallback SIL] sont utilisées pour le débugage. Elles donnent respectivement les sets et les codes Unicode de caractères. Elles sont utilisé dans certains OS comme police de "secours" au cas où une police importante manquerai ou ne disposerai pas de certains caractères à afficher.
 
-La plupart des polices n'ont pas tous les dessins des 65535 caractères unicodes, ceux-ci peuvent être affiche sous la forme d'un rectangle, un `?` dans un losange ou simplement ne pas apparaitre (en fonction de la police).
+La plupart des polices n'ont pas tous les dessins des 65535 caractères unicodes, ceux-ci peuvent être affiche sous la forme d'un rectangle, un `?` dans un losange ou simplement ne pas apparaitre (en fonction de la police). Example, le glyph `.notdef` (http://www.microsoft.com/typography/otspec/notdef.gif).
 
 = Fontes incluses =
 
-Est inclut, un package de fonte permettant de faire tourner des démos. Les fichiers de licences accompagnent les fichiers de police. La plupart sont sous licence Open Font License, GNU General Public License, Creative Commons "Attribution-NonCommercial" ou Creative Commons "Attribution-ShareAlike".
+Est inclut, un package séparé de fontes permettant de faire tourner des démos (dans downloads). Les fichiers de licences accompagnent les fichiers de police. La plupart sont sous licence Open Font License, GNU General Public License, Creative Commons "Attribution-NonCommercial" ou Creative Commons "Attribution-ShareAlike".
 
 = Licences =
 
@@ -18,7 +18,9 @@ Il est nécessaire de bien connaitre les licences des éléments tiers que l'on 
 
 Certaines licences de polices n'authorisent pas l'embarquement dans un document. Il n'est donc pas possible de les utiliser avec Flash autrement qu'en tant que police système. Certaines fonderies le permettent, mais seulement par l'obtention d'une licence (majoritairement payante).
 
-FontStream propose un système de distribution progressive resposant sur le format SWF (embarquant une police), similairement aux [Alternatives#Bibliothèque_chargée_dynamiquement Bibliothèque chargée dynamiquement]. *Toutes les polices dont la licence n'interdisent pas l'embarquement dans un document SWF peuvent donc être utilisées avec FontStream.*
+FontStream propose un système de distribution progressive resposant sur le format SWF (embarquant une police), similairement aux [Alternatives#Bibliothèque_chargée_dynamiquement Bibliothèque chargée dynamiquement].
+
+*Toutes les polices dont la licence n'interdisent pas l'embarquement dans un document SWF peuvent donc être utilisées avec FontStream.*
 
 La position chez Adobe sur ce sujet :
 {{{

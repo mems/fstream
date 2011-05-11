@@ -2,25 +2,27 @@
 
 = Polices =
 
-Une *police* est un style particulier d'une *fonte* (gras, italic, light, etc.). Une *fonte* est donc un ensemble de *polices*. En anglais une *police* s'appelle _font_ et une *fonte* s'appelle _type_.
+A *font* is a specific style of a *type* (bold, italic, light, etc.). So, a *type* is a group of *fonts*. In French, a *font* is called _police_ and a *type* is called _fonte_.
 
-Les fontes comme [http://developer.apple.com/fonts/lastresortfont/ LastResort] ou [http://scripts.sil.org/cms/scripts/page.php?item_id=UnicodeBMPFallbackFont Unicode BMP Fallback SIL] sont utilisées pour le débugage. Elles donnent respectivement les sets et les codes Unicode de caractères. Elles sont utilisé dans certains OS comme police de "secours" au cas où une police importante manquerai ou ne disposerai pas de certains caractères à afficher.
+[http://developer.apple.com/fonts/lastresortfont/ LastResort] or [http://scripts.sil.org/cms/scripts/page.php?item_id=UnicodeBMPFallbackFont Unicode BMP Fallback SIL] fonts are used for debug. It give respectively Unicode sets and Unicode char code. It used by some OS as fallback fonts in case of a important font could miss or don't required chars.
 
-La plupart des polices n'ont pas tous les dessins des 65535 caractères unicodes, ceux-ci peuvent être affiche sous la forme d'un rectangle, un `?` dans un losange ou simplement ne pas apparaitre (en fonction de la police).
+The majority of fonts don't have all 65535 unicodes chars glyphs, but some time, missing char could be displayed with a rectangle, `?` in a black rhombus (depends fonts). See `.notdef` glyph (http://www.microsoft.com/typography/otspec/notdef.gif).
 
-= Fontes incluses =
+= Included fontes =
 
-Est inclut, un package de fonte permettant de faire tourner des démos. Les fichiers de licences accompagnent les fichiers de police. La plupart sont sous licence Open Font License, GNU General Public License, Creative Commons "Attribution-NonCommercial" ou Creative Commons "Attribution-ShareAlike".
+Some fonts are included in a seperate package (see downloads), used as example for demos. Legal terms materials are also provided with fonts files. Most of it are under Open Font License, GNU General Public License, Creative Commons "Attribution-NonCommercial" or Creative Commons "Attribution-ShareAlike".
 
-= Licences =
+= Licenses =
 
-Il est nécessaire de bien connaitre les licences des éléments tiers que l'on utilise (fontes, librairies, visuels, etc.). Il peut exister plusieurs licences pour un même élément. En outre, pour une même police, une fonderie peux interdire l'utilisation de celle ci sur un site web (via [https://developer.mozilla.org/en/css/@font-face @font-face] en CSS) alors qu'une autre peux l'autoriser.
+You *must* know about legals terms of all your externals resources you use (like types, librairies, graphical assets, etc.). Mutliple licenses could be exist for the same element. In addition, for the same font, a foundry could allow usage of a particular font on web sites (via CSS [https://developer.mozilla.org/en/css/@font-face @font-face]) whereas an other foundry could allow it.
 
-Certaines licences de polices n'authorisent pas l'embarquement dans un document. Il n'est donc pas possible de les utiliser avec Flash autrement qu'en tant que police système. Certaines fonderies le permettent, mais seulement par l'obtention d'une licence (majoritairement payante).
+Some licenses don't allow fonts to be embedded in document. Therefore, the only way to use these fonts is as device font. Some foundry allow it, but you need obtains a special license (often paid).
 
-FontStream propose un système de distribution progressive resposant sur le format SWF (embarquant une police), similairement aux [Alternatives#Bibliothèque_chargée_dynamiquement Bibliothèque chargée dynamiquement]. *Toutes les polices dont la licence n'interdisent pas l'embarquement dans un document SWF peuvent donc être utilisées avec FontStream.*
+FontStream work as a progressive delivery, consist of usage of SWF format (embedding a font), similary to [Alternatives#Dynamic_shared_library Dynamic shared library].
 
-La position chez Adobe sur ce sujet :
+*All fonts where SWF embedding is not disallowed could be used with FontStream.*
+
+Adobe attitude about this subject:
 {{{
 Subject: Re: Font licensing - Font container format
 From: Christopher Slye <cslye arobase adobe.com>
@@ -101,7 +103,7 @@ On Mar 22, 2011, at 1:29 PM, Memmie Lenglet wrote:
 	* [http://www.microsoft.com/typography/otspec/os2.htm#fst OpenType fsType entry]
 	* http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/swfutils/src/java/flash/fonts/FSType.java
 
-= Liens connexes =
+= Connexes links =
 
 	* http://cg.scs.carleton.ca/~luc/fonts.html
 	* http://typophile.com/node/18207
