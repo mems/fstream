@@ -15,47 +15,48 @@ U+0190-U+01F3
 ...
 }}}
 
-No specific tool exist at the moment, but compiling this files could be done with one of tools listed below.
+To compile these chunks, you can use Flex SDK or hxswfml handled by a script (shell script or as3 script). See below.
 
-== Flex SDK ==
+== Flex SDK - fontkit ==
 
-_Need a non-open-source version of Flex SDK (see  [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000 fontswf])_
-
-{{{
-$ java -Dsun.io.useCanonCaches=false -Xms32m -Xmx512m -jar "$FLEX_HOME/lib/flex-fontkit.jar" -3 -u "U+0000-U+0063" "font.ttf" -o "output_folder/U+0000-U+0063"
-}}}
-
-!TrueType, !OpenType, !TrueType Collection and Datafork !TrueType font formats are supported.
+See [EmbedFont#Flex_SDK_-_fontkit] for more informations.
 
 == hxswfml ==
 
-http://code.google.com/p/hxswfml/
+See [EmbedFont#hxswfml] for more informations.
+
+== Scripts ==
+
+=== fsdgen, Redtamarin AS3 script ===
 
 {{{
-$ hxswfml ttf2swf "font.ttf" "output_folder/U+0000-U+0063" -glyphs 0-99 -class EmbeddedFont
+set FLEX_HOME=path/to/flexsdk
+redshell fsdgen.as -- myfont.otf -a "My Font"
 }}}
 
-== Shell script, ligne de commande ==
+You can make a shell script or a command line script using arguments redirection `$@` (Unix) or `%*` (Windows)
+
+See redtamarin readme.txt about compile AS3 script to executable.
+
+	* http://code.google.com/p/fstream/source/browse/trunk/utils/fsdgen.as
+
+=== Shell script, command line script ===
 
 _This script use Flex SDK, but could be adapted to use an other tool._
+
+*This script is here just as example and could not work as except, must be debugged and tested!*
 
 	* http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000
 	* http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 	* http://tldp.org/LDP/abs/html/
 	* http://en.wikipedia.org/wiki/Printf#sprintf
 
-*This script must be debugged and tested!*
-
-_TODO: Need to test this script!_
-
-_TODO: add error handling of java/jar exec command (in the loop)_
-
 {{{
 #!/bin/bash
 
 E_BADARGS=10
 
-FLEX_HOME="path/to/flex_sdk"
+FLEX_HOME="path/to/flexsdk"
 FLEX_FONT_KIT="java -Dsun.io.useCanonCaches=false -Xms32m -Xmx512m -jar \"$FLEX_HOME/lib/flex-fontkit.jar\""
 font_swf="$FLEX_FONT_KIT -3";
 size=100

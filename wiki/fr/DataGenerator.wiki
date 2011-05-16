@@ -15,36 +15,41 @@ U+0190-U+01F3
 ...
 }}}
 
-Il n'existe pas d'outil dédié pour le moment, mais la génération de ces fichiers peux être faite par les outils listés ci dessous.
+Pour compiler ces SWF, peux être utilisé le Flex SDK ou hxswfml géré par un script (script shell ou script as3). Voir ci dessous.
 
 == Flex SDK ==
 
-_Nécéssite la version non open-source du Flex SDK (cf. [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000 fontswf])_
-
-{{{
-$ java -Dsun.io.useCanonCaches=false -Xms32m -Xmx512m -jar "$FLEX_HOME/lib/flex-fontkit.jar" -3 -u "U+0000-U+0063" "font.ttf" -o "output_folder/U+0000-U+0063"
-}}}
-
-Supporte les format !TrueType, !OpenType, !TrueType Collection et Datafork !TrueType.
+Voir [EmbedFont#Flex_SDK_-_fontkit] pour plus d'informations.
 
 == hxswfml ==
 
-http://code.google.com/p/hxswfml/
+Voir [EmbedFont#hxswfml] pour plus d'informations.
+
+== Scripts ==
+
+=== fsdgen, script AS3 pour Redtamarin ===
 
 {{{
-$ hxswfml ttf2swf "font.ttf" "output_folder/U+0000-U+0063" -glyphs 0-99 -class EmbeddedFont
+set FLEX_HOME=path/to/flexsdk
+redshell fsdgen.as -- myfont.otf -a "My Font"
 }}}
 
-== Shell script, ligne de commande ==
+Peux être crée un script shell ou un script de ligne de commande utilisant la redirection d'arguments `$@` (Unix) ou `%*` (Windows)
+
+Le readme.txt de redtamarin indique compiler les scripts AS3 en executable.
+
+	* http://code.google.com/p/fstream/source/browse/trunk/utils/fsdgen.as
+
+=== Script shell, ligne de commande ===
 
 _Ce script utilise le Flex SDK, mais peux être adapté pour l'utilisation d'autres outils_
+
+*Ce script est donné à titre d'example et peut ne pas complet ni fonctionner comme prévu. Nécéssite d'être testé/corrigé*
 
 	* http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000
 	* http://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 	* http://tldp.org/LDP/abs/html/
 	* http://en.wikipedia.org/wiki/Printf#sprintf
-
-*Ce script n'est pas complet et doit être testé/corrigé*
 
 _TODO:_ Test this script!
 

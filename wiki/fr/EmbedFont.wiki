@@ -161,12 +161,14 @@ Cette solution permet de déclarer l'utilisation d'une police dans Flex. Elle se
 }
 }}}
 
-== fontswf ==
+== Flex SDK - fontkit ==
 
 Cet outil en ligne de commande est fournit avec la version non open source du Flex SDK. Il permet de compiler directement une police dans un SWF, mais ne la lie pas à une classe ActionScript (SWF tag `SymbolClass`).
 
+_Nécéssite la version non open-source du Flex SDK (cf. [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000 fontswf])_
+
 {{{
-$ fontswf [options] <font-file>
+fontswf [options] <font-file>
 }}}
 
 Paramètres:
@@ -184,10 +186,22 @@ Paramètres:
 
 Exemple d'utilisation :
 {{{
-$ fontswf -3 -u U+0020-007F -bold -o ~/myboldfont.swf ~/myboldfont.ttf
+fontswf -3 -u U+0020-007F -bold -o ~/myboldfont.swf ~/myboldfont.ttf
 }}}
 
 Cela va embarquer en non CFF les caractères de Latin Basique de la police `myboldfont.ttf` et générer le SWF `myboldfont.swf`
+
+Note : Un paramètre non documenté permet de définir la non compression du fichier SWF généré en ajoutant  une propriété systèle `flex.swf.uncompressed` à `true` (compressé par défaut si la version est plus grand ou égale à SWF6).
+
+Exemple (nécéssite un appel direct, à la place d'utiliser le script shell fourni fontswf par le Flex SDK) :
+{{{
+java -Dsun.io.useCanonCaches=false -Xms32m -Xmx512m -Dflex.swf.uncompressed="true" -jar "FLEX_HOME/lib/flex-fontkit.jar" -3 -u U+0020-007F -bold -o ~/myboldfont.swf ~/myboldfont.ttf
+}}}
+
+_Nécéssite de changer le chemin relatif FLEX_HOME correspondant à l'emplacement du Flex SDK._
+
+	* [http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/swfutils/src/java/flash/swf/MovieEncoder.java MovieEncoder.java source] -> [http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/swfutils/src/java/flash/swf/Header.java Header.java source]
+	* [http://www.rgagnon.com/javadetails/java-0150.html Java How-to - Read environment variables from an application]
 
 Les formats de police supporté sont :
 	* !TrueType (`*`.ttf)
@@ -201,8 +215,18 @@ Les formats de police supporté sont :
 	* [http://help.adobe.com/fr_FR/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e04.html Setting character ranges]
 	* [http://help.adobe.com/fr_FR/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e06.html Using multiple typefaces]
 
+== hxswfml ==
+
+{{{
+hxswfml ttf2swf "myfont.ttf" "myfont.swf" -glyphs 32-127 -class EmbeddedFont
+}}}
+
+Les formats de police supporté sont :
+	* !TrueType (`*`.ttf)
+	
+	* http://code.google.com/p/hxswfml/
+
 == Autres outils ==
 
  	* [http://www.swfmill.org/ swfill]
- 	* [http://code.google.com/p/hxswfml/ hxswfml]
  	* [http://www.swftools.org/ swftools]

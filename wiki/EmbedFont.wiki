@@ -160,12 +160,15 @@ This method used to define a font in Flex. It's works pretty similar to metadata
 }
 }}}
 
-== fontswf ==
+== Flex SDK - fontkit ==
 
 This command line tool is given with non-opensource Flex SDK version. It's used to embed a font in a SWF file, without make linkage with an ActionScript class (SWF tag `SymbolClass`).
 
+_Need a non-open-source version of Flex SDK (see  [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000 fontswf])_
+
+
 {{{
-$ fontswf [options] <font-file>
+fontswf [options] <font-file>
 }}}
 
 Arguments:
@@ -183,10 +186,22 @@ Arguments:
 
 Usage example:
 {{{
-$ fontswf -3 -u U+0020-007F -bold -o ~/myboldfont.swf ~/myboldfont.ttf
+fontswf -3 -u U+0020-007F -bold -o ~/myboldfont.swf ~/myboldfont.ttf
 }}}
 
 This will embed Latin Basic chars of font `myboldfont.ttf` as non CFF in SWF `myboldfont.swf`.
+
+Note: A undocumented setting could define if the non-compressioness of generated SWF file by adding a system property `flex.swf.uncompressed` set to `true` (compressed by default if version is greater or equal to SWF6).
+
+Example (need direct call, instead of using fontswf shellscript provided by Flex SDK):
+{{{
+java -Dsun.io.useCanonCaches=false -Xms32m -Xmx512m -Dflex.swf.uncompressed="true" -jar "FLEX_HOME/lib/flex-fontkit.jar" -3 -u U+0020-007F -bold -o ~/myboldfont.swf ~/myboldfont.ttf
+}}}
+
+_Need to update path FLEX_HOME relative to location of Flex SDK._
+
+	* [http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/swfutils/src/java/flash/swf/MovieEncoder.java MovieEncoder.java source] -> [http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/swfutils/src/java/flash/swf/Header.java Header.java source]
+	* [http://www.rgagnon.com/javadetails/java-0150.html Java How-to - Read environment variables from an application]
 
 Supported font file types are:
 	* !TrueType (`*`.ttf)
@@ -200,8 +215,18 @@ Supported font file types are:
 	* [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e04.html Setting character ranges]
 	* [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e06.html Using multiple typefaces]
 
+== hxswfml ==
+
+{{{
+hxswfml ttf2swf "myfont.ttf" "myfont.swf" -glyphs 32-127 -class EmbeddedFont
+}}}
+
+Supported font file types are:
+	* !TrueType (`*`.ttf)
+	
+	* http://code.google.com/p/hxswfml/
+	
 == Other tools ==
 
  	* [http://www.swfmill.org/ swfill]
- 	* [http://code.google.com/p/hxswfml/ hxswfml]
  	* [http://www.swftools.org/ swftools]

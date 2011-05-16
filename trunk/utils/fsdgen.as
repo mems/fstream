@@ -1,5 +1,5 @@
-import avmplus.System;
-import avmplus.FileSystem;
+import avmplus.*;
+import avmplus.*;
 import C.stdlib.*;
 
 const USAGE:String = <![CDATA[usage: %cmd options file
@@ -9,15 +9,15 @@ This script generate SWF chunks of a font, by calling flex-fontkit.jar of Flex S
 Supported font file types are TrueType, OpenType, TrueType Collection and Datafork TrueType.
 
 OPTIONS:
-   -h	 	   Show this message
-   -b	 	   Embeds the font’s bold face.
-   -i	 	   Embeds the font’s italic face.
+   -h          Show this message
+   -b          Embeds the font's bold face.
+   -i          Embeds the font's italic face.
    -u          Ouput uncompressed SWF
-   -a alias    Sets the font’s alias. The default is the font’s family name.
+   -a alias    Sets the font's alias. The default is the font's family name.
    -c length   Sets the number of chars in each SWF chunks. The default is 100.
    
-Require RedTamarin %minversion, available here: http://code.google.com/p/redtamarin/
-Require FLEX_HOME environment variable, defining location of Flex SDK folder.]]>;
+RedTamarin %minversion minimum version required, available here: http://code.google.com/p/redtamarin/
+FLEX_HOME environment variable must be set, defining location of Flex SDK folder.]]>;
 
 const INVALID_FILE:uint = 2;
 const ARG_ERROR:uint = 10;
@@ -28,7 +28,7 @@ const MIN_VERSION:Array = [0, 3, 0];//0.3.0
 
 function usage()
 {
-	trace(USAGE.replace("%cmd", System.programFilename).replace("%minversion", MIN_VERSION.join(".")));
+	trace(USAGE.replace(/%cmd/g, System.programFilename).replace(/%minversion/g, MIN_VERSION.join(".")));
 }
 
 /*
@@ -39,7 +39,7 @@ if(parseInt(redTamarinVersion[2]) < MIN_VERSION[2]
 	&& parseInt(redTamarinVersion[1]) < MIN_VERSION[1]
 	&& parseInt(redTamarinVersion[0]) < MIN_VERSION[0])
 {
-	trace("Require RedTamarin shell equal or greated than %minversion. Current version is %currentversion\n".replace("%minversion", MIN_VERSION.join(".")).replace("%currentversion", redTamarinVersion.join(".")));
+	trace("Require RedTamarin shell equal or greated than %minversion. Current version is %currentversion\n".replace(/%minversion/g, MIN_VERSION.join(".")).replace(/%currentversion/g, redTamarinVersion.join(".")));
 	usage();
 	System.exit(INVALID_API);
 }
@@ -48,16 +48,14 @@ Check FLEX_HOME env var
 */
 if(getenv("FLEX_HOME") == "" || getenv("FLEX_HOME") == null)
 {
-	trace("Require environment variable FLEX_HOME. To define it, use this command:\n\tset FLEX_HOME=\"" + FileSystem.normalizePath("path/to/flex") + "\"\n");
+	trace("Require environment variable FLEX_HOME. To define it, use this command:\n\tset FLEX_HOME=" + FileSystem.normalizePath("path/to/flex") + "\n");
 	usage();
 	System.exit(INVALID_API);
 }
-/*
-TODO check if java and jar of fontSWF are available
-*/
+//TODO check if java and jar of fontSWF are available
 
 var javaCmd:String = "java -Dsun.io.useCanonCaches=false -Xms32m -Xmx512m"
-var fontSWFJarCmd:String = " -jar \"%flexhome/lib/flex-fontkit.jar\" -3".replace("%flexhome", getenv("FLEX_HOME"));
+var fontSWFJarCmd:String = " -jar \"%flexhome/lib/flex-fontkit.jar\" -3".replace(/%flexhome/g, getenv("FLEX_HOME"));
 var chunkLength:uint = 100;
 var alias:String = null;
 var bold:Boolean = false, italic:Boolean = false;
@@ -96,7 +94,7 @@ for(var i:uint = 0; i < argc; i++)
 		}
 		else
 		{
-			trace("%arg requires an argument\n".replace("%arg", arg));
+			trace("%arg requires an argument\n".replace(/%arg/g, arg));
 			usage();
 			System.exit(ARG_ERROR);
 		}
@@ -110,7 +108,7 @@ for(var i:uint = 0; i < argc; i++)
 		}
 		else
 		{
-			trace("%arg requires an argument\n".replace("%arg", arg));
+			trace("%arg requires an argument\n".replace(/%arg/g, arg));
 			usage();
 			System.exit(ARG_ERROR);
 		}
@@ -147,7 +145,7 @@ for(var i:uint = 0; i < argc; i++)
 	//Other arguments
 	else if(arg.charAt() == "-")
 	{
-		trace("Invalid option: $arg\n".replace("%arg", arg));
+		trace("Invalid option: $arg\n".replace(/%arg/g, arg));
 		usage();
 		System.exit(ARG_ERROR);
 	}
@@ -173,7 +171,7 @@ File argument not found or file not exist
 */
 if(file == null || file == "" || !FileSystem.isRegularFile(file))
 {
-	trace("Invalid file.\n");
+	trace("Invalid file: $file\n".replace(/%file/g, file));
 	usage();
 	System.exit(INVALID_FILE);
 }
@@ -198,11 +196,12 @@ if(italic)
 
 var max:uint = 0xFFFF;
 var i:uint = 0;
+var last:int = -1;
 while(last < max)
 {
-	var first:uint = i++ * chunkLength;
-	last = first + chunkLength - 1;
+	var first:uint = last + 1;
+	last = Math.min(first + chunkLength - 1, max);
 	var range:String = "U+" + ("000" + first.toString(16).toUpperCase()).substr(-4, 4) + "-U+" + ("000" + last.toString(16).toUpperCase()).substr(-4, 4);
-	var cmd:String = javaCmd + fontSWFJarCmd + "-u \"%range\" -o \"%range\" \"%file\"".replace("%range", range).replace("%file", file);
+	var cmd:String = javaCmd + fontSWFJarCmd + " -u \"%range\" -o \"%range\" \"%file\"".replace(/%range/g, range).replace("%file", file);
 	trace(System.popen(cmd));
 }
