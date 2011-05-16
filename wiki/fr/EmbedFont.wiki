@@ -191,7 +191,7 @@ fontswf -3 -u U+0020-007F -bold -o ~/myboldfont.swf ~/myboldfont.ttf
 
 Cela va embarquer en non CFF les caractères de Latin Basique de la police `myboldfont.ttf` et générer le SWF `myboldfont.swf`
 
-Note : Un paramètre non documenté permet de définir la non compression du fichier SWF généré en ajoutant  une propriété systèle `flex.swf.uncompressed` à `true` (compressé par défaut si la version est plus grand ou égale à SWF6).
+Un paramètre non documenté permet de définir la non compression du fichier SWF généré en ajoutant  une propriété systèle `flex.swf.uncompressed` à `true` (compressé par défaut si la version est plus grand ou égale à SWF6).
 
 Exemple (nécéssite un appel direct, à la place d'utiliser le script shell fourni fontswf par le Flex SDK) :
 {{{
@@ -210,6 +210,7 @@ Les formats de police supporté sont :
 	* Mac Data Fork Fonts (`*`.dfont)
 	* _Type 1 !PostScript_
 
+Quelques liens :
 	* [http://help.adobe.com/fr_FR/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000 Using the fontswf utility]
 	* [http://help.adobe.com/fr_FR/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e09.html About the font managers]
 	* [http://help.adobe.com/fr_FR/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e04.html Setting character ranges]
@@ -223,7 +224,8 @@ hxswfml ttf2swf "myfont.ttf" "myfont.swf" -glyphs 32-127 -class EmbeddedFont
 
 Les formats de police supporté sont :
 	* !TrueType (`*`.ttf)
-	
+
+Quelques liens :
 	* http://code.google.com/p/hxswfml/
 
 == Autres outils ==

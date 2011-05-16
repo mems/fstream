@@ -39,6 +39,7 @@ Peux être crée un script shell ou un script de ligne de commande utilisant la 
 Le readme.txt de redtamarin indique compiler les scripts AS3 en executable.
 
 	* http://code.google.com/p/fstream/source/browse/trunk/utils/fsdgen.as
+	* http://code.google.com/p/redtamarin/
 
 === Script shell, ligne de commande ===
 

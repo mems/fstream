@@ -39,6 +39,7 @@ You can make a shell script or a command line script using arguments redirection
 See redtamarin readme.txt about compile AS3 script to executable.
 
 	* http://code.google.com/p/fstream/source/browse/trunk/utils/fsdgen.as
+	* http://code.google.com/p/redtamarin/
 
 === Shell script, command line script ===
 

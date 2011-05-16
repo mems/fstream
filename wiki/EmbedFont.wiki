@@ -191,7 +191,7 @@ fontswf -3 -u U+0020-007F -bold -o ~/myboldfont.swf ~/myboldfont.ttf
 
 This will embed Latin Basic chars of font `myboldfont.ttf` as non CFF in SWF `myboldfont.swf`.
 
-Note: A undocumented setting could define if the non-compressioness of generated SWF file by adding a system property `flex.swf.uncompressed` set to `true` (compressed by default if version is greater or equal to SWF6).
+A undocumented setting could define if the non-compressioness of generated SWF file by adding a system property `flex.swf.uncompressed` set to `true` (compressed by default if version is greater or equal to SWF6).
 
 Example (need direct call, instead of using fontswf shellscript provided by Flex SDK):
 {{{
@@ -210,6 +210,7 @@ Supported font file types are:
 	* Mac Data Fork Fonts (`*`.dfont)
 	* _Type 1 !PostScript_
 
+Some links:	
 	* [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7f5f.html#WS02f7d8d4857b16776fadeef71269f135e73-8000 Using the fontswf utility]
 	* [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e09.html About the font managers]
 	* [http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7e04.html Setting character ranges]
@@ -223,7 +224,8 @@ hxswfml ttf2swf "myfont.ttf" "myfont.swf" -glyphs 32-127 -class EmbeddedFont
 
 Supported font file types are:
 	* !TrueType (`*`.ttf)
-	
+
+Some links:
 	* http://code.google.com/p/hxswfml/
 	
 == Other tools ==
