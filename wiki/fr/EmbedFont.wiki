@@ -51,7 +51,7 @@ Propriétés de la balise :
 || `fontWeight`								|| `normal` | `bold` | `heavy`																																|| Graisse de la police. `normal` par défaut ||
 || `fontStyle`								|| `normal` | `italic` | `oblique`																															|| Style de la police. `normal` par défaut ||
 || `mimeType`^4^							|| `application/x-font` | `application/x-font-truetype` | `application/x-font-truetype-collection` | `application/x-font-opentype` | `application/x-dfont`	|| Le type MIME. A défaut de connaitre le plus adéquate, utiliser `application/x-font` ||
-|| `cff`^5^									|| `true` | `false`																																			|| Active ou désactive la méthode d'embarquement Compact Font Format (DefineFont4) utilisé par le FTE (flash.text.engine) seulement. `true` dans Flex SDK 4+ par défaut (`false` pour les version précédentes) ||
+|| `embedAsCFF`^5^							|| `true` | `false`																																			|| Active ou désactive la méthode d'embarquement Compact Font Format (DefineFont4) utilisé par le FTE (flash.text.engine) seulement. `true` dans Flex SDK 4+ par défaut (`false` pour les version précédentes) ||
 || `advancedAntiAliasing`					|| `true` | `false`																																			|| Active ou désactive les informations pour l'antialiasing avancé. `true` par défaut. ||
 || `unicodeRange`							|| `<unicode-range>` | `<range-name>`																														|| Définit par [http://www.w3.org/TR/1998/REC-CSS2-19980512/fonts.html#descdef-unicode-range CSS2 unicode range]. `U+0000-U+FFFF` par défaut. ||
 
@@ -59,7 +59,7 @@ Propriétés de la balise :
 	# _L'une de ces propriétés est obligatoire_
 	# _Peux être obligatoire en fonction du format de la source_
 	# _Peux être obligatoire en fonction du format de la source et des !FontManager utilisé_
-	# _Dans les version avant la build 7972 du Flex SDK la propriété s'appelais `embedAsCFF`_
+	# _Dans les version avant la build 7972 du Flex SDK la propriété s'appelais `cff`_
 
 _Note : D'autres propriété existent mais ne sont pas documentées ou utilisées pour l'intégration de polices._
 

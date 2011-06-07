@@ -1,4 +1,4 @@
-#summary Utilisation de l'outil fsdgen
+#summary Usage of fsdgen tool
 
 = Data generator =
 
@@ -19,11 +19,11 @@ To compile these chunks, you can use Flex SDK or hxswfml handled by a script (sh
 
 == Flex SDK - fontkit ==
 
-See [EmbedFont#Flex_SDK_-_fontkit] for more informations.
+See [EmbedFont#Flex_SDK_-_fontkit Flex SDK - fontkit] for more informations.
 
 == hxswfml ==
 
-See [EmbedFont#hxswfml] for more informations.
+See [EmbedFont#hxswfml hxswfml] for more informations.
 
 == Scripts ==
 

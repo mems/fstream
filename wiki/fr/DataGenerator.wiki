@@ -19,11 +19,11 @@ Pour compiler ces SWF, peux être utilisé le Flex SDK ou hxswfml géré par un 
 
 == Flex SDK ==
 
-Voir [EmbedFont#Flex_SDK_-_fontkit] pour plus d'informations.
+Voir [EmbedFont#Flex_SDK_-_fontkit Flex SDK - fontkit] pour plus d'informations.
 
 == hxswfml ==
 
-Voir [EmbedFont#hxswfml] pour plus d'informations.
+Voir [EmbedFont#hxswfml hxswfml] pour plus d'informations.
 
 == Scripts ==
 
