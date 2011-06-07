@@ -1,3 +1,0 @@
-#summary Coté serveur
-
-Voir la page [DataGenerator utilisation de l'outil fsdgen]
