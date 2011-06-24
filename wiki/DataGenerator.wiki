@@ -31,7 +31,7 @@ See [EmbedFont#hxswfml hxswfml] for more informations.
 
 {{{
 set FLEX_HOME=path/to/flexsdk
-redshell fsdgen.as -- myfont.otf -a "My Font"
+redshell fsdgen.as -- -a "My Font" "myfont.otf"
 }}}
 
 You can make a shell script or a command line script using arguments redirection `$@` (Unix) or `%*` (Windows)

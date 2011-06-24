@@ -31,7 +31,7 @@ Voir [EmbedFont#hxswfml hxswfml] pour plus d'informations.
 
 {{{
 set FLEX_HOME=path/to/flexsdk
-redshell fsdgen.as -- myfont.otf -a "My Font"
+redshell fsdgen.as -- -a "Ma police" "mapolice.otf"
 }}}
 
 Peux être crée un script shell ou un script de ligne de commande utilisant la redirection d'arguments `$@` (Unix) ou `%*` (Windows)
